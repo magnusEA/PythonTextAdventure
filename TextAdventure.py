@@ -4,21 +4,17 @@
 import items
 import playerStatus
 
-# initalize classes
-m = items.medicine()
-b = items.bandages()
-f = items.flashlight()
-g = items.gun()
-PS = playerStatus.playerStatus()
-
 displayMessage = True
 
 # append classes (will use a list to contain all classes within a list) 
 it = []
-it.append(m)
-it.append(b)
-it.append(f)
-it.append(g)
+it.append(items.medicine())
+it.append(items.bandages())
+it.append(items.flashlight())
+it.append(items.gun())
+it.append(items.jimSaid())
+it.append(items.dontBob())
+it.append(items.changeTopic())
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -42,12 +38,13 @@ def RunChoice(pickChoice):
 	# check if string isn't null 
 	if userGot:
 		letter = displayChoice[-1:]
-		print choiceAction[letter], userGot
+		#print choiceAction[letter], userGot
 		
 		# use list of classes to determine if item/thing is done or used to be used later when determining what branchs
 		# to take later on in the story 
 		for x in range(0, len(it)):
 			if (it[x].itemName() == userGot):
+				print choiceAction[letter], it[x].displayText()
 				it[x].setInInv()
 				break
 	else:
@@ -117,13 +114,14 @@ def userInput():
 	
 # append all choice actions in dict
 choiceAction = {
-'A': 'You decide to take'
+'A': 'You decide to take',
+'B': 'You tell Bob:' 
 }
 		
 # append all choices in dict
 choices = {
-'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A'
-#'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic'
+'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A',
+'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B'
 }
 		
 # append all story (list for each branch of story)
