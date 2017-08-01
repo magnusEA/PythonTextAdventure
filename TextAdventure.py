@@ -6,6 +6,9 @@ import playerStatus
 
 # initalize classes
 m = items.medicine()
+b = items.bandages()
+f = items.flashlight()
+g = items.gun()
 PS = playerStatus.playerStatus()
 
 displayMessage = True
@@ -13,6 +16,9 @@ displayMessage = True
 # append classes (will use a list to contain all classes within a list) 
 it = []
 it.append(m)
+it.append(b)
+it.append(f)
+it.append(g)
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -40,9 +46,9 @@ def RunChoice(pickChoice):
 		
 		# use list of classes to determine if item/thing is done or used to be used later when determining what branchs
 		# to take later on in the story 
-		for item in it:
-			if (item.itemName() == userGot):
-				print "GOT IT"
+		for x in range(0, len(it)):
+			if (it[x].itemName() == userGot):
+				it[x].setInInv()
 				break
 	else:
 		#if not found try again 
@@ -78,6 +84,8 @@ def DisplayStory(display):
 
 def commandList():
 	print "status: Display information of your player's health"
+	print "inv: Will display your inventory"
+	print "use item: Will use item given the name"
 
 def userInput():
 	global displayMessage
@@ -94,6 +102,14 @@ def userInput():
 	elif(get == 'status' or get == 'Status'):
 		#display player status
 		PS.displayStatus()
+		userInput()
+		return
+	elif(get == 'inv' or get == 'Inv'):
+		
+		#display player inventory
+		for i in it:
+			if(i.isInv() == True):
+				print i.itemName()
 		userInput()
 		return
 		
