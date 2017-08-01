@@ -122,7 +122,7 @@ class gun(items):
 		return "Gun"
 		
 	def displayText(self):
-		return "Gun"
+		return "Gun, looks like it only has 2 shots"
 		
 	def action(self):
 		return "Deals X amount more damage"
@@ -134,6 +134,7 @@ class gun(items):
 		return self.inv
 		
 	def setInInv(self):
+		self.amountCount = 2
 		self.usable = True
 		self.inv = True
 		
