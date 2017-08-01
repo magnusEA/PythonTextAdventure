@@ -7,6 +7,9 @@ class items:
 	def itemName(self): pass
 	
 	@abstractmethod
+	def displayText(self): pass
+	
+	@abstractmethod
 	def action(self): pass
 	
 	@abstractmethod
@@ -25,12 +28,15 @@ class medicine(items):
 
 	def __init__(self):
 		self.inv = False
-		self.usable = True
+		self.usable = False
 		self.amountCount = 0
 	
 	def itemName(self):
 		return "Medicine"
 		
+	def displayText(self):
+		return "Medicine"
+	
 	def action(self):
 		return "restores 50 health"
 		
@@ -41,7 +47,7 @@ class medicine(items):
 		return self.inv
 		
 	def setInInv(self):
-		self.amountCount += 1
+		self.usable = True
 		self.inv = True
 		
 	def amount(self):
@@ -51,10 +57,13 @@ class bandages(items):
 
 	def __init__(self):
 		self.inv = False
-		self.usable = True
+		self.usable = False
 		self.amountCount = 0
 		
 	def itemName(self):
+		return "Bandages"
+		
+	def displayText(self):
 		return "Bandages"
 		
 	def action(self):
@@ -67,7 +76,7 @@ class bandages(items):
 		return self.inv
 		
 	def setInInv(self):
-		self.amountCount += 1
+		self.usable = True
 		self.inv = True
 		
 	def amount(self):
@@ -77,10 +86,13 @@ class flashlight(items):
 
 	def __init__(self):
 		self.inv = False
-		self.usable = True
+		self.usable = False
 		self.amountCount = 0
 		
 	def itemName(self):
+		return "Flashlight"
+	
+	def displayText(self):
 		return "Flashlight"
 		
 	def action(self):
@@ -93,7 +105,7 @@ class flashlight(items):
 		return self.inv
 		
 	def setInInv(self):
-		self.amountCount += 1
+		self.usable = True
 		self.inv = True
 		
 	def amount(self):
@@ -103,10 +115,13 @@ class gun(items):
 
 	def __init__(self):
 		self.inv = False
-		self.usable = True
+		self.usable = False
 		self.amountCount = 0
 		
 	def itemName(self):
+		return "Gun"
+		
+	def displayText(self):
 		return "Gun"
 		
 	def action(self):
@@ -119,9 +134,98 @@ class gun(items):
 		return self.inv
 		
 	def setInInv(self):
-		# maybe amount count can depend on amount of bullets the player has
-		self.amountCount += 1
+		self.usable = True
 		self.inv = True
+		
+	def amount(self):
+		return self.amountCount
+		
+class jimSaid(items):
+	
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		
+	def itemName(self):
+		return "Let him know what Jim said"
+		
+	def displayText(self):
+		return "Jim said..."
+		
+	def action(self):
+		return 
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+class dontBob(items):
+	
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		
+	def itemName(self):
+		return "Don\'t tell Bob anything"
+		
+	def displayText(self):
+		return "Well it's a bit of a personal thing"
+		
+	def action(self):
+		return 
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+class changeTopic(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		
+	def itemName(self):
+		return "Change the topic"
+		
+	def displayText(self):
+		return "Well, Joule was just saying..."
+		
+	def action(self):
+		return 
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
 		
 	def amount(self):
 		return self.amountCount
