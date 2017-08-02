@@ -76,9 +76,32 @@ def DisplayStory(display):
 	# At end of function find next branch to be displayed 
 	# I'd imagine here we'd have a lot of condition statements
 	# checking for whos alive, items held, etc to determine which branch or list
-	# to run next 
+	# to run next 	
+	nextBranch()
 	print "END OF DISPLAY"
 
+# will handle calling next branch of story
+def nextBranch():
+		#set boolean values to false to start 
+
+		for x in range(0, len(it)):
+			# if single condition branch do this 
+			if(it[x].isUsable() == True and it[x].action() == True):
+				brh = it[x].getBranch()
+				# set branch to false to avoid calling it again 
+				it[x].setBranchToFalse()
+				
+				# call displayStory with new branch 
+				if(brh == 'chapter1branchA'):
+					DisplayStory(chapter1BranchA)
+				elif(brh == 'chapter1branchB'):
+					DisplayStory(chapter1BranchB)
+				elif(brh == 'chapter1branchC'):
+					DisplayStory(chapter1BranchC)
+			
+			# otherwise handle multiple condition branchs 
+				
+	
 def commandList():
 	print "status: Display information of your player's health"
 	print "inv: Will display your inventory"
@@ -115,7 +138,7 @@ def userInput():
 # append all choice actions in dict
 choiceAction = {
 'A': 'You decide to take',
-'B': 'You tell Bob:' 
+'B': 'You decide:' 
 }
 		
 # append all choices in dict
@@ -129,6 +152,31 @@ choices = {
 playerName = raw_input("Enter player name:" )
 story = []
 chapter1 = []
+chapter1BranchA = []
+chapter1BranchB = []
+chapter1BranchC = []
+
+# chapter1BranchA decide to tell bob what Jim said 
+chapter1BranchA.append('''You begin to explain what Jim told you to Bob after you finish Bob looks a bit worried.''')
+chapter1BranchA.append('''Bob: Ok then, so will need to be careful you can count on me and I hope that I can count on you to look after each other\'s backs.''')
+chapter1BranchA.append(playerName + '''Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
+
+# chapter1BranchB don't tell Bob what Jim said (lie)
+chapter1BranchB.append('''You lie to Bob telling him that Jim was just wondering what we might be taking on this journey so he can have a better idea on what to take with him.''')
+chapter1BranchB.append('''Bob seem a bit confused and displeased with the answer given.''')
+chapter1BranchB.append('''Bob: "Ok whatever you say, I hope it\'s a really good secret that you need to keep it away from me."''')
+chapter1BranchB.append('''Bob is to smart he knows I\'m lying but I don't really have a choice I can't tell him the truth right now I can\'t trust anyone until I\'m sure.''')
+chapter1BranchB.append(playerName + ''': I never lie Bob it\'s the truth''')
+chapter1BranchB.append('''Bob: Ok whatever let\'s just finish getting ready''')
+
+# chapter1BranchC change the topic 
+chapter1BranchC.append(playerName + ''': "Well Jim is kinda having second thoughts about going to the surface but anyways what do you think about going to the surface?"''')
+chapter1BranchC.append('''Bob: "I don't think getting to the surface now will be to diffcult now that we\'ve dig quite a bit all the way to the surface\'s sewer."''')
+chapter1BranchC.append(playerName + ''': "I hope so I\'ve dug only so far in but never was with the team that made it to the sewers."''')
+chapter1BranchC.append('''Bob: "yeah, well will be there shortly! let\'s get our stuff together."''')
+chapter1BranchC.append('''Good, it seems I got Bob off of Jim for the time being''')
+
+# chapter1
 chapter1.append('''You wake up to a very loud alarm 
 You are surrounded by dark musty walls. Almost like in a prison cell. 
 But this is just how it is everyday underground. 
