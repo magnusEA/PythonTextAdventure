@@ -35,7 +35,7 @@ class medicine(items):
 		return "Medicine"
 		
 	def displayText(self):
-		return "Medicine"
+		return "This will prevent any infections in case I get a cut."
 	
 	def action(self):
 		return "restores 50 health"
@@ -64,7 +64,7 @@ class bandages(items):
 		return "Bandages"
 		
 	def displayText(self):
-		return "Bandages"
+		return "In case of any acidents I'll take some bandages."
 		
 	def action(self):
 		return "restores 20 health"
@@ -93,7 +93,7 @@ class flashlight(items):
 		return "Flashlight"
 	
 	def displayText(self):
-		return "Flashlight"
+		return "Always helpful to take a spare."
 		
 	def action(self):
 		return "lights up a room"
@@ -122,7 +122,7 @@ class gun(items):
 		return "Gun"
 		
 	def displayText(self):
-		return "Gun, looks like it only has 2 shots"
+		return "the Gun. Looks like it only has 2 shots"
 		
 	def action(self):
 		return "Deals X amount more damage"
@@ -181,7 +181,7 @@ class dontBob(items):
 		return "Don\'t tell Bob anything"
 		
 	def displayText(self):
-		return "Well it's a bit of a personal thing"
+		return "It's nothing important."
 		
 	def action(self):
 		return 
@@ -211,7 +211,7 @@ class changeTopic(items):
 		return "Change the topic"
 		
 	def displayText(self):
-		return "Well, Joule was just saying..."
+		return "We shouldn\'t keep Joule waiting."
 		
 	def action(self):
 		return 
