@@ -66,6 +66,8 @@ def DisplayStory(display):
 
 			#wait for user input to conitune 
 			userInput()
+			
+			# check if any branch to display in story 
 			nextBranch()
 		else:
 			#else print normally
@@ -78,8 +80,7 @@ def DisplayStory(display):
 	# I'd imagine here we'd have a lot of condition statements
 	# checking for whos alive, items held, etc to determine which branch or list
 	# to run next 
-	#nextBranch()
-	print "END OF DISPLAY"
+	# maybe not?
 
 # will handle calling next branch of story
 def nextBranch():
