@@ -146,6 +146,7 @@ class jimSaid(items):
 	def __init__(self):
 		self.inv = False
 		self.usable = False
+		self.branch = True
 		
 	def itemName(self):
 		return "Let him know what Jim said"
@@ -154,7 +155,7 @@ class jimSaid(items):
 		return "Jim said..."
 		
 	def action(self):
-		return 
+		return self.branch
 		
 	def isUsable(self):
 		return self.usable
@@ -171,11 +172,18 @@ class jimSaid(items):
 	def amount(self):
 		return self.amountCount
 		
+	def getBranch(self):
+		return 'chapter1branchA'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
 class dontBob(items):
 	
 	def __init__(self):
 		self.inv = False
 		self.usable = False
+		self.branch = True
 		
 	def itemName(self):
 		return "Don\'t tell Bob anything"
@@ -184,7 +192,7 @@ class dontBob(items):
 		return "It's nothing important."
 		
 	def action(self):
-		return 
+		return self.branch
 		
 	def isUsable(self):
 		return self.usable
@@ -201,11 +209,18 @@ class dontBob(items):
 	def amount(self):
 		return self.amountCount
 		
+	def getBranch(self):
+		return 'chapter1branchB'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
 class changeTopic(items):
 
 	def __init__(self):
 		self.inv = False
 		self.usable = False
+		self.branch = True
 		
 	def itemName(self):
 		return "Change the topic"
@@ -214,7 +229,7 @@ class changeTopic(items):
 		return "We shouldn\'t keep Joule waiting."
 		
 	def action(self):
-		return 
+		return self.branch
 		
 	def isUsable(self):
 		return self.usable
@@ -230,3 +245,9 @@ class changeTopic(items):
 		
 	def amount(self):
 		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter1branchC'
+
+	def setBranchToFalse(self):
+		self.branch = False
