@@ -140,7 +140,44 @@ class gun(items):
 		
 	def amount(self):
 		return self.amountCount
+
+class takeLantern(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
 		
+	def itemName(self):
+		return "Take lantern"
+		
+	def displayText(self):
+		return "To take the lantern"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		self.inv = True
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter1branchA'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+# non-items------------------------------------------------------------------------------------------------		
 class jimSaid(items):
 	
 	def __init__(self):

@@ -154,7 +154,8 @@ choiceAction = {
 choices = {
 'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A',
 'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B',
-'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C'
+'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C',
+'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C'
 }
 		
 # append all story (list for each branch of story)
@@ -169,6 +170,7 @@ chapter1BranchC = []
 chapter2BranchA = []
 chapter2BranchB = []
 chapter2BranchC = []
+chapter2TakeLantern = []
 chapter2 = []
 chapter2A = []
 chapter2B = []
@@ -198,7 +200,21 @@ chapter1BranchC.append('''Good, it seems I got Bob off of Jim for the time being
 chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
 
 # chapter2BranchB look for jim alone
-chapter2BranchB.append('''I start looking for Jim on my own''')
+chapter2BranchB.append('''It nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
+chapter2BranchB.append('''It would be great to take it with me, but I risk waking up someone.''')
+chapter2BranchB.append('''I don’t want to deal with anyone’s questions right now either.''')
+chapter2BranchB.append('''(Ch2Choice2) ''')
+
+# chapter 2 decide to take lantern
+chapter2TakeLantern.append('''You take the lantern and start making your way out of the camp leaving the camp without any light.''')
+chapter2TakeLantern.append('''It didn't take very long when I start to smell something most foul.''')
+chapter2TakeLantern.append('''It's then when you find Jim.''')
+chapter2TakeLantern.append('''Jim is on the floor eviscerated I almost can't tell it's him but becuase of the clothing it's obvious it's Jim.''')
+chapter2TakeLantern.append('''I grab my stomach and get a rush of vomit spewing out of my mouth.''')
+chapter2TakeLantern.append('''After I get myself together and come to the realization that Jim is gone I decide I need to hurry back to tell everyone wants become of Jim.''')
+chapter2TakeLantern.append('''Just then I hear screams coming back from camp.''')
+chapter2TakeLantern.append('''I started to run back to camp something must be wrong maybe the killer got someone else I thought''')
+
 
 # chapter2BranchC wake everyone up to find jim 
 chapter2BranchC.append('''I start to wake everyone up to find Jim''')
