@@ -23,4 +23,9 @@ class playerStatus:
 		
 	def setRadiation(self, rad):
 		self.radiation = rad
+	
+	def attack(self):
+		return 10
 		
+	def dmgHealth(self, dmg):
+		self.health -= dmg

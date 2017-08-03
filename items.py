@@ -166,13 +166,12 @@ class takeLantern(items):
 	def setInInv(self):
 		# make usable to be checked later 
 		self.usable = True		
-		self.inv = True
 		
 	def amount(self):
 		return self.amountCount	
 		
 	def getBranch(self):
-		return 'chapter1branchA'
+		return 'chapter2TakeLantern'
 
 	def setBranchToFalse(self):
 		self.branch = False

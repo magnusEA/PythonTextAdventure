@@ -3,11 +3,13 @@
 # import files
 import items
 import playerStatus
-
+import enemys
 displayMessage = True
 
 # append classes (will use a list to contain all classes within a list) 
 it = []
+en = []
+PS = playerStatus.playerStatus()
 it.append(items.medicine())
 it.append(items.bandages())
 it.append(items.flashlight())
@@ -18,6 +20,9 @@ it.append(items.changeTopic())
 it.append(items.findJim())
 it.append(items.findJimAlone())
 it.append(items.wakeEveryone())
+it.append(items.takeLantern())
+
+en.append(enemys.mutant())
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -55,12 +60,69 @@ def RunChoice(pickChoice):
 		print "Try again"
 		RunChoice(pickChoice)
 		return 
+
+def checkHealth(health):
+	if(health <= 0):
+		print "You died!"
+		return True
+
+def checkEnemyHealth(health):
+	if(health <= 0):
+		print "It\'s dead!"
+		return True
+		
+def enemyAttack(eninx):
+	death = False
+	PS.dmgHealth(en[eninx].attack())
+	print en[eninx].name() + " dealt " + str(en[eninx].attack()) + " damage to you!"
+	
+	# check player health
+	death = checkHealth(PS.health)
+	
+	if(death == True):
+		print "GAME OVER"
+		return
+	
+	print "Your turn"
+	battle(eninx)
+		
+def battle(eninx):
+	dead = False
+	get = raw_input("> ")
+	if(get == 'attack' or get == 'Attack'):
+		en[eninx].dmgHealth(PS.attack())
+		print "you dealt " + str(PS.attack()) + " to " + str(en[eninx].name())
+		dead = checkEnemyHealth(en[eninx].getHealth())
+		
+		if(dead == True):
+			# exit function 
+			return
+			
+		# enemy turn to attack 
+		raw_input("> ")
+		enemyAttack(eninx)
+	else:
+		battle(eninx)
+		
+def battleWho(battleThis):
+	eindx = 0
+	for x in range(0, len(en)):
+		if(en[x].name() == battleThis):
+			eindx = x
+			print "FOUND"
+			break
+	print "Fighting " + battleThis
+	battle(eindx)
 		
 def DisplayStory(display):
 	#foreach index print story
 	for s in display:
+		#if battle do this 
+		if(s[0] == '(' and s[1] == 'B'):
+			e = s[s.find(':')+1:s.find(')')]
+			battleWho(e)
 		#get first char from list like so s[0]
-		if(s[0] == '('):
+		elif(s[0] == '('):
 			#print everything after )
 			print s[s.find(')')+1:]
 			
@@ -106,7 +168,9 @@ def nextBranch():
 				elif(brh == 'chapter2BranchB'):
 					DisplayStory(chapter2BranchB)
 				elif(brh == 'chapter2BranchC'):
-					DisplayStory(chapter2BranchC)					
+					DisplayStory(chapter2BranchC)	
+				elif(brh == 'chapter2TakeLantern'):
+					DisplayStory(chapter2TakeLantern)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -215,7 +279,11 @@ chapter2TakeLantern.append('''I grab my stomach and get a rush of vomit spewing 
 chapter2TakeLantern.append('''After I get myself together and come to the realization that Jim is gone I decide I need to hurry back to tell everyone wants become of Jim.''')
 chapter2TakeLantern.append('''Just then I hear screams coming back from camp.''')
 chapter2TakeLantern.append('''I started to run back to camp something must be wrong maybe the killer got someone else I thought''')
-
+chapter2TakeLantern.append('''As I reached the camp I was horrified at the sight!''')
+chapter2TakeLantern.append('''You see a variety of human body parts and blood everywhere.''')
+chapter2TakeLantern.append('''All around are theses humanoid creatures, luckily they haven\'t spotted you are to busy tearing and eating your fellow crew mates.''')
+chapter2TakeLantern.append('''You slowly drop the lantern to not give your position away and slowly turn to leave the sight but just as you turned around one of the creatures was standing behide you and is looking ready to tear you open.''')
+chapter2TakeLantern.append('''(Battle:mutant)''')
 
 # chapter2BranchC wake everyone up to find jim 
 chapter2BranchC.append('''I start to wake everyone up to find Jim''')
