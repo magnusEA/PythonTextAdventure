@@ -231,62 +231,12 @@ chapter1Part2 = []
 chapter1BranchA = []
 chapter1BranchB = []
 chapter1BranchC = []
+chapter2 = []
 chapter2BranchA = []
 chapter2BranchB = []
 chapter2BranchC = []
 chapter2TakeLantern = []
-chapter2 = []
-chapter2A = []
-chapter2B = []
-chapter2C = []
 
-# chapter1BranchA decide to tell bob what Jim said 
-chapter1BranchA.append('''You begin to explain what Jim told you to Bob after you finish Bob looks a bit worried.''')
-chapter1BranchA.append('''Bob: Ok then, so will need to be careful you can count on me and I hope that I can count on you to look after each other\'s backs.''')
-chapter1BranchA.append(playerName + ''': Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
-
-# chapter1BranchB don't tell Bob what Jim said (lie)
-chapter1BranchB.append('''You lie to Bob telling him that Jim was just wondering what we might be taking on this journey so he can have a better idea on what to take with him.''')
-chapter1BranchB.append('''Bob seem a bit confused and displeased with the answer given.''')
-chapter1BranchB.append('''Bob: "Ok whatever you say, I hope it\'s a really good secret that you need to keep it away from me."''')
-chapter1BranchB.append('''Bob is to smart he knows I\'m lying but I don't really have a choice I can't tell him the truth right now I can\'t trust anyone until I\'m sure.''')
-chapter1BranchB.append(playerName + ''': I never lie Bob it\'s the truth''')
-chapter1BranchB.append('''Bob: Ok whatever let\'s just finish getting ready''')
-
-# chapter1BranchC change the topic 
-chapter1BranchC.append(playerName + ''': "Well Jim is kinda having second thoughts about going to the surface but anyways what do you think about going to the surface?"''')
-chapter1BranchC.append('''Bob: "I don't think getting to the surface now will be to diffcult now that we\'ve dig quite a bit all the way to the surface\'s sewer."''')
-chapter1BranchC.append(playerName + ''': "I hope so I\'ve dug only so far in but never was with the team that made it to the sewers."''')
-chapter1BranchC.append('''Bob: "yeah, well will be there shortly! let\'s get our stuff together."''')
-chapter1BranchC.append('''Good, it seems I got Bob off of Jim for the time being''')
-
-# chapter2BranchA wake up Bob
-chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
-
-# chapter2BranchB look for jim alone
-chapter2BranchB.append('''It nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
-chapter2BranchB.append('''It would be great to take it with me, but I risk waking up someone.''')
-chapter2BranchB.append('''I don’t want to deal with anyone’s questions right now either.''')
-chapter2BranchB.append('''(Ch2Choice2) ''')
-
-# chapter 2 decide to take lantern 
-# Hill, Yuma, Cody dies
-chapter2TakeLantern.append('''You take the lantern and start making your way out of the camp leaving the camp without any light.''')
-chapter2TakeLantern.append('''It didn't take very long when I start to smell something most foul.''')
-chapter2TakeLantern.append('''It's then when you find Jim.''')
-chapter2TakeLantern.append('''Jim is on the floor eviscerated I almost can't tell it's him but becuase of the clothing it's obvious it's Jim.''')
-chapter2TakeLantern.append('''I grab my stomach and get a rush of vomit spewing out of my mouth.''')
-chapter2TakeLantern.append('''After I get myself together and come to the realization that Jim is gone I decide I need to hurry back to tell everyone wants become of Jim.''')
-chapter2TakeLantern.append('''Just then I hear screams coming back from camp.''')
-chapter2TakeLantern.append('''I started to run back to camp something must be wrong maybe the killer got someone else I thought''')
-chapter2TakeLantern.append('''As I reached the camp I was horrified at the sight!''')
-chapter2TakeLantern.append('''You see a variety of human body parts and blood everywhere.''')
-chapter2TakeLantern.append('''All around are theses humanoid creatures, luckily they haven\'t spotted you are to busy tearing and eating your fellow crew mates.''')
-chapter2TakeLantern.append('''You slowly drop the lantern to not give your position away and slowly turn to leave the sight but just as you turned around one of the creatures was standing behide you and is looking ready to tear you open.''')
-chapter2TakeLantern.append('''(Battle:mutant)''')
-
-# chapter2BranchC wake everyone up to find jim 
-chapter2BranchC.append('''I start to wake everyone up to find Jim''')
 
 # chapter1
 chapter1.append('''You wake up to a very loud alarm 
@@ -342,6 +292,29 @@ chapter1.append('''I walked back over to Bob ''')
 chapter1.append('''Bob: “What happened? Is everything alright between you two?” ''')
 chapter1.append('''(Ch1Choice2) ''')
 
+
+# chapter1BranchA decide to tell bob what Jim said 
+chapter1BranchA.append('''You decide to tell Bob everything Jim told you. Bob understandably looks worried.''')
+chapter1BranchA.append('''Bob:"I\'m not sure what to make of all of that. We well stay on alert and watch each other\'s backs. I really hope he is wrong though."''')
+chapter1BranchA.append(playerName + ''':"We can just keep this between the three of us. We don\'t want to cause any issues in case what Jim said is wrong. We will stay on the lookout though."''')
+
+# chapter1BranchB don't tell Bob what Jim said (lie)
+chapter1BranchB.append('''You decude to lie to Bob.''')
+chapter1BranchB.append(playerName + ''':"Jim was just asking if we prepared everything we needed for the trip."''')
+chapter1BranchB.append('''Bob doesn't seem to fully believe you.''')
+chapter1BranchB.append('''Bob: "Ok whatever you say. It must have been very important if you feel the need to keep it away from me."''')
+chapter1BranchB.append('''"Bob didn't buy the lie. I don't really have a choice though. Telling him now would cause unessesary conflict."''')
+chapter1BranchB.append(playerName + ''':"That was he really all he asked."''')
+chapter1BranchB.append('''Bob: "Ok whatever let\'s just finish getting ready."''')
+
+# chapter1BranchC change the topic 
+chapter1BranchC.append(playerName + ''': "It wasn't anything worth metioning. More importantly we should finish preparing before Joule gets angry. The surface is within reach"''')
+chapter1BranchC.append('''Bob: "Right we should finish up. Just a few more obstacles and we can finally reach the surface."''')
+chapter1BranchC.append(playerName + ''': "These obstacles are nothing to us. We will overcome them easily and reach our goal."''')
+chapter1BranchC.append('''Bob: "Yeah, well will be there shortly! Let\'s get our stuff together."''')
+chapter1BranchC.append('''"Good. Bob only has his sights on reaching the surface.I won\'t need to worry about him asking about Jim."''')
+
+
 # chapter 1 part 2
 chapter1Part2.append('''Just as we are finishing packing Joule begins to wave and speak loudly to get our attention''')
 chapter1Part2.append('''Joule: “Ok everyone seems like we are ready to go so let us begin.” ''')
@@ -355,8 +328,47 @@ chapter2.append('''Joule: “Alright everyone we are setting up here for the nig
 chapter2.append('''As everyone begins to pick out their sleeping spots, Jim and I decide to sleep close in case Joule tries anything (Maybe we can add Bob depending if the player told bob or not). I take one last look around and fall asleep. ''')
 chapter2.append(''' *dreaming of reaching the surface* ''')
 chapter2.append('''I wake up to a horrific nose. As I look around I notice that Jim is gone. He might have gotten up to use the bathroom or something, but can\'t be too sure about that. ''')
-chapter2.append('''So, I decide to stay up for a bit and wait for Jim to come back. A few minutes pass and Joule isn’t back yet. I take a closer look around and also notice that Joule is gone as well. This isn\'t good. I get up and look for Jim. ''')
+chapter2.append('''So, I decide to stay up for a bit and wait for Jim to come back. A few minutes pass and Jim isn\'t back yet. I take a closer look around and also notice that Joule is gone as well. This isn\'t good. I get up and look for Jim. ''')
 chapter2.append('''(Ch2Choice1) ''')
+
+# chapter2BranchA wake up Bob
+chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
+
+# chapter2BranchB look for jim alone
+chapter2BranchB.append('''It\' nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
+chapter2BranchB.append('''"It would be great to take it with me, but I risk waking up someone."''')
+chapter2BranchB.append('''"I don’t want to deal with anyone\'s questions right now either."''')
+chapter2BranchB.append('''(Ch2Choice2) ''')
+
+# chapter 2 decide to take lantern 
+# Hill, Yuma, Cody dies
+chapter2TakeLantern.append('''You take the lantern and start making your way out of the camp, leaving the camp without any light.''')
+chapter2TakeLantern.append('''It didn't take very long for you to start smelling something incredibly foul.''')
+chapter2TakeLantern.append('''It's then that you find Jim.''')
+chapter2TakeLantern.append('''Jim is on the floor eviscerated. The only way you are able to identify that it is him is by the pieces of clothing left behind. That\'s definitely Jim.''')
+chapter2TakeLantern.append('''You grab your stomach and suddenly a rush of vomit spews out of your mouth.''')
+chapter2TakeLantern.append('''After you regain your composure you come to the realization that Jim is dead. You decide to hurry back to tell everyone the fate that has befallen Jim.''')
+chapter2TakeLantern.append('''Just then you hear screams coming back from camp.''')
+chapter2TakeLantern.append('''You start to run back to camp. Something must be wrong.''')
+chapter2TakeLantern.append(playerName + ''':"Oh no! Did the killer make their way to camp!?"''')
+chapter2TakeLantern.append('''As you reach the camp you were horrified at the sight.''')
+chapter2TakeLantern.append(playerName + ''':"No...''')
+chapter2TakeLantern.append('''The only thing before you are torn bits of flesh and a massive amount of blood.''')
+chapter2TakeLantern.append('''Something else eventualy catches your sight. Something living.''')
+chapter2TakeLantern.append('''All around the bloody scene humanoid creatures. Luckily they haven\'t spotted you as they are to busy tearing and eating your fellow crew mates.''')
+chapter2TakeLantern.append('''You slowly drop the lantern as to not give away your position and slowly turn to leave. However, just as you turn around you notice that a creature was just second away from getting the jump on you. The only hope for survival now is to stand and fight.''')
+chapter2TakeLantern.append('''(Battle:mutant)''')
+
+# chapter2BranchC wake everyone up to find jim 
+chapter2BranchC.append('''You decide to wake eveyone up.''')
+chapter2BranchC.append(playerName + ''': "Get up everyone! Jim and Joule are missing!''')
+chapter2BranchC.append('''Tanner: "Who cares! They probably just needed to take a piss. Just shut up and let us sleep.''')
+chapter2BranchC.append(playerName + ''':I don't think that\'s it. They\'ve been gone for a while now. We really should go look for them.''')
+chapter2BranchC.append('''Cody: "I agree with '''+playerName+'''. I noticed that they left one after the other. Quite some time has passed and they still aren\'t back.''')
+chapter2BranchC.append('''Tanner: "Alright fine! Let's hurry up and find them already. You can apologize for waking me up afterwards. Wake up Yuma!"''')
+chapter2BranchC.append('''Yuma: "...huh? What's going on? Why did you wake me up?" ''')
+chapter2BranchC.append('''Tanner: " Just get up and help look for Joule and Jim. '''+playerName+''' and Cody think they are in trouble, but I\'m sure they are overthinking it. The faster we bring them back the faster we can prove '''+playerName+''' and Cody are wrong and we can go back to sleep.''')
+
 
 
 DisplayStory(chapter1)
