@@ -6,7 +6,9 @@ class playerStatus:
 		
 	def displayStatus(self):
 		print "Health: ", self.health
-		print "Radiation level: ", self.radiation
+		
+		# radiation level will be a hidden stat 
+		#print "Radiation level: ", self.radiation
 		
 	#getters
 	def getHealth(self):
