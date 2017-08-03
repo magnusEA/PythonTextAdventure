@@ -15,6 +15,9 @@ it.append(items.gun())
 it.append(items.jimSaid())
 it.append(items.dontBob())
 it.append(items.changeTopic())
+it.append(items.findJim())
+it.append(items.findJimAlone())
+it.append(items.wakeEveryone())
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -66,9 +69,6 @@ def DisplayStory(display):
 
 			#wait for user input to conitune 
 			userInput()
-			
-			# check if any branch to display in story 
-			nextBranch()
 		else:
 			#else print normally
 			print s
@@ -80,7 +80,8 @@ def DisplayStory(display):
 	# I'd imagine here we'd have a lot of condition statements
 	# checking for whos alive, items held, etc to determine which branch or list
 	# to run next 
-	# maybe not?
+	# check if any branch to display in story 
+	nextBranch()
 
 # will handle calling next branch of story
 def nextBranch():
@@ -100,7 +101,13 @@ def nextBranch():
 					DisplayStory(chapter1BranchB)
 				elif(brh == 'chapter1branchC'):
 					DisplayStory(chapter1BranchC)
-			
+				elif(brh == 'chapter2BranchA'):
+					DisplayStory(chapter2BranchA)
+				elif(brh == 'chapter2BranchB'):
+					DisplayStory(chapter2BranchB)
+				elif(brh == 'chapter2BranchC'):
+					DisplayStory(chapter2BranchC)					
+		
 			# otherwise handle multiple condition branchs
 	
 def commandList():
@@ -139,7 +146,8 @@ def userInput():
 # append all choice actions in dict
 choiceAction = {
 'A': 'You decide to take',
-'B': 'You tell Bob:' 
+'B': 'You tell Bob:', 
+'C': 'You decide to:'
 }
 		
 # append all choices in dict
@@ -154,9 +162,13 @@ choices = {
 playerName = raw_input("Enter player name:" )
 story = []
 chapter1 = []
+chapter1Part2 = []
 chapter1BranchA = []
 chapter1BranchB = []
 chapter1BranchC = []
+chapter2BranchA = []
+chapter2BranchB = []
+chapter2BranchC = []
 chapter2 = []
 chapter2A = []
 chapter2B = []
@@ -165,7 +177,7 @@ chapter2C = []
 # chapter1BranchA decide to tell bob what Jim said 
 chapter1BranchA.append('''You begin to explain what Jim told you to Bob after you finish Bob looks a bit worried.''')
 chapter1BranchA.append('''Bob: Ok then, so will need to be careful you can count on me and I hope that I can count on you to look after each other\'s backs.''')
-chapter1BranchA.append(playerName + '''Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
+chapter1BranchA.append(playerName + ''': Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
 
 # chapter1BranchB don't tell Bob what Jim said (lie)
 chapter1BranchB.append('''You lie to Bob telling him that Jim was just wondering what we might be taking on this journey so he can have a better idea on what to take with him.''')
@@ -181,6 +193,15 @@ chapter1BranchC.append('''Bob: "I don't think getting to the surface now will be
 chapter1BranchC.append(playerName + ''': "I hope so I\'ve dug only so far in but never was with the team that made it to the sewers."''')
 chapter1BranchC.append('''Bob: "yeah, well will be there shortly! let\'s get our stuff together."''')
 chapter1BranchC.append('''Good, it seems I got Bob off of Jim for the time being''')
+
+# chapter2BranchA wake up Bob
+chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
+
+# chapter2BranchB look for jim alone
+chapter2BranchB.append('''I start looking for Jim on my own''')
+
+# chapter2BranchC wake everyone up to find jim 
+chapter2BranchC.append('''I start to wake everyone up to find Jim''')
 
 # chapter1
 chapter1.append('''You wake up to a very loud alarm 
@@ -235,12 +256,15 @@ chapter1.append('''Jim: “I\'ll do the same. Let’s watch each other's backs.�
 chapter1.append('''I walked back over to Bob ''')
 chapter1.append('''Bob: “What happened? Is everything alright between you two?” ''')
 chapter1.append('''(Ch1Choice2) ''')
-chapter1.append('''Just as we are finishing packing Joule begins to wave and speak loudly to get our attention''')
-chapter1.append('''Joule: “Ok everyone seems like we are ready to go so let us begin.” ''')
-chapter1.append('''We begin heading into the first passage. The path will slowly elevate us upwards until we reach the resting post. We set up there and continue our journey the next day. It should take us roughly 4 days to reach the sewers. We should be able to reach a resting post each day until we finally reach the surface. ''')
-chapter1.append('''As we approach the first resting post, I realize that Cody\'s breathing is irregular, almost anxious. It could just be nerves getting to him, but what Jim told me still weighs heavily in my mind. ''')
-chapter1.append('''Come to think of it I\'ve never been on an expedition with Cody before. I’ve only ever encountered him around the city. I have been told about his expeditions before, but never anything in detail. ''')
 
+# chapter 1 part 2
+chapter1Part2.append('''Just as we are finishing packing Joule begins to wave and speak loudly to get our attention''')
+chapter1Part2.append('''Joule: “Ok everyone seems like we are ready to go so let us begin.” ''')
+chapter1Part2.append('''We begin heading into the first passage. The path will slowly elevate us upwards until we reach the resting post. We set up there and continue our journey the next day. It should take us roughly 4 days to reach the sewers. We should be able to reach a resting post each day until we finally reach the surface. ''')
+chapter1Part2.append('''As we approach the first resting post, I realize that Cody\'s breathing is irregular, almost anxious. It could just be nerves getting to him, but what Jim told me still weighs heavily in my mind. ''')
+chapter1Part2.append('''Come to think of it I\'ve never been on an expedition with Cody before. I’ve only ever encountered him around the city. I have been told about his expeditions before, but never anything in detail. ''')
+
+# chapter 2
 chapter2.append('''After a long day traveling through the underground we come to a stop. It\'s time for our rest. ''')
 chapter2.append('''Joule: “Alright everyone we are setting up here for the night. It’s a bit early for a rest stop, but the next closest rest site is too far to travel to in one day. Get all the rest you can because the next stop will take longer to reach.” ''')
 chapter2.append('''As everyone begins to pick out their sleeping spots, Jim and I decide to sleep close in case Joule tries anything (Maybe we can add Bob depending if the player told bob or not). I take one last look around and fall asleep. ''')
@@ -251,4 +275,5 @@ chapter2.append('''(Ch2Choice1) ''')
 
 
 DisplayStory(chapter1)
+DisplayStory(chapter1Part2)
 DisplayStory(chapter2)
