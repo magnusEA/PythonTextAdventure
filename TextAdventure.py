@@ -205,7 +205,8 @@ chapter2BranchB.append('''It would be great to take it with me, but I risk wakin
 chapter2BranchB.append('''I don’t want to deal with anyone’s questions right now either.''')
 chapter2BranchB.append('''(Ch2Choice2) ''')
 
-# chapter 2 decide to take lantern
+# chapter 2 decide to take lantern 
+# Hill, Yuma, Cody dies
 chapter2TakeLantern.append('''You take the lantern and start making your way out of the camp leaving the camp without any light.''')
 chapter2TakeLantern.append('''It didn't take very long when I start to smell something most foul.''')
 chapter2TakeLantern.append('''It's then when you find Jim.''')
