@@ -3,11 +3,13 @@
 # import files
 import items
 import playerStatus
-
+import enemys
 displayMessage = True
 
 # append classes (will use a list to contain all classes within a list) 
 it = []
+en = []
+PS = playerStatus.playerStatus()
 it.append(items.medicine())
 it.append(items.bandages())
 it.append(items.flashlight())
@@ -15,6 +17,12 @@ it.append(items.gun())
 it.append(items.jimSaid())
 it.append(items.dontBob())
 it.append(items.changeTopic())
+it.append(items.findJim())
+it.append(items.findJimAlone())
+it.append(items.wakeEveryone())
+it.append(items.takeLantern())
+
+en.append(enemys.mutant())
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -52,12 +60,69 @@ def RunChoice(pickChoice):
 		print "Try again"
 		RunChoice(pickChoice)
 		return 
+
+def checkHealth(health):
+	if(health <= 0):
+		print "You died!"
+		return True
+
+def checkEnemyHealth(health):
+	if(health <= 0):
+		print "It\'s dead!"
+		return True
+		
+def enemyAttack(eninx):
+	death = False
+	PS.dmgHealth(en[eninx].attack())
+	print en[eninx].name() + " dealt " + str(en[eninx].attack()) + " damage to you!"
+	
+	# check player health
+	death = checkHealth(PS.health)
+	
+	if(death == True):
+		print "GAME OVER"
+		return
+	
+	print "Your turn"
+	battle(eninx)
+		
+def battle(eninx):
+	dead = False
+	get = raw_input("> ")
+	if(get == 'attack' or get == 'Attack'):
+		en[eninx].dmgHealth(PS.attack())
+		print "you dealt " + str(PS.attack()) + " to " + str(en[eninx].name())
+		dead = checkEnemyHealth(en[eninx].getHealth())
+		
+		if(dead == True):
+			# exit function 
+			return
+			
+		# enemy turn to attack 
+		raw_input("> ")
+		enemyAttack(eninx)
+	else:
+		battle(eninx)
+		
+def battleWho(battleThis):
+	eindx = 0
+	for x in range(0, len(en)):
+		if(en[x].name() == battleThis):
+			eindx = x
+			print "FOUND"
+			break
+	print "Fighting " + battleThis
+	battle(eindx)
 		
 def DisplayStory(display):
 	#foreach index print story
 	for s in display:
+		#if battle do this 
+		if(s[0] == '(' and s[1] == 'B'):
+			e = s[s.find(':')+1:s.find(')')]
+			battleWho(e)
 		#get first char from list like so s[0]
-		if(s[0] == '('):
+		elif(s[0] == '('):
 			#print everything after )
 			print s[s.find(')')+1:]
 			
@@ -66,9 +131,6 @@ def DisplayStory(display):
 
 			#wait for user input to conitune 
 			userInput()
-			
-			# check if any branch to display in story 
-			nextBranch()
 		else:
 			#else print normally
 			print s
@@ -80,7 +142,8 @@ def DisplayStory(display):
 	# I'd imagine here we'd have a lot of condition statements
 	# checking for whos alive, items held, etc to determine which branch or list
 	# to run next 
-	# maybe not?
+	# check if any branch to display in story 
+	nextBranch()
 
 # will handle calling next branch of story
 def nextBranch():
@@ -100,7 +163,15 @@ def nextBranch():
 					DisplayStory(chapter1BranchB)
 				elif(brh == 'chapter1branchC'):
 					DisplayStory(chapter1BranchC)
-			
+				elif(brh == 'chapter2BranchA'):
+					DisplayStory(chapter2BranchA)
+				elif(brh == 'chapter2BranchB'):
+					DisplayStory(chapter2BranchB)
+				elif(brh == 'chapter2BranchC'):
+					DisplayStory(chapter2BranchC)	
+				elif(brh == 'chapter2TakeLantern'):
+					DisplayStory(chapter2TakeLantern)
+		
 			# otherwise handle multiple condition branchs
 	
 def commandList():
@@ -139,14 +210,16 @@ def userInput():
 # append all choice actions in dict
 choiceAction = {
 'A': 'You decide to take',
-'B': 'You tell Bob:' 
+'B': 'You tell Bob:', 
+'C': 'You decide to:'
 }
 		
 # append all choices in dict
 choices = {
 'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A',
 'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B',
-'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C'
+'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C',
+'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C'
 }
 		
 # append all story (list for each branch of story)
@@ -154,9 +227,14 @@ choices = {
 playerName = raw_input("Enter player name:" )
 story = []
 chapter1 = []
+chapter1Part2 = []
 chapter1BranchA = []
 chapter1BranchB = []
 chapter1BranchC = []
+chapter2BranchA = []
+chapter2BranchB = []
+chapter2BranchC = []
+chapter2TakeLantern = []
 chapter2 = []
 chapter2A = []
 chapter2B = []
@@ -165,7 +243,7 @@ chapter2C = []
 # chapter1BranchA decide to tell bob what Jim said 
 chapter1BranchA.append('''You begin to explain what Jim told you to Bob after you finish Bob looks a bit worried.''')
 chapter1BranchA.append('''Bob: Ok then, so will need to be careful you can count on me and I hope that I can count on you to look after each other\'s backs.''')
-chapter1BranchA.append(playerName + '''Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
+chapter1BranchA.append(playerName + ''': Of coruse for now let\'s keep this between us three let's not tell anyone unless we are sure to notice something.''')
 
 # chapter1BranchB don't tell Bob what Jim said (lie)
 chapter1BranchB.append('''You lie to Bob telling him that Jim was just wondering what we might be taking on this journey so he can have a better idea on what to take with him.''')
@@ -181,6 +259,34 @@ chapter1BranchC.append('''Bob: "I don't think getting to the surface now will be
 chapter1BranchC.append(playerName + ''': "I hope so I\'ve dug only so far in but never was with the team that made it to the sewers."''')
 chapter1BranchC.append('''Bob: "yeah, well will be there shortly! let\'s get our stuff together."''')
 chapter1BranchC.append('''Good, it seems I got Bob off of Jim for the time being''')
+
+# chapter2BranchA wake up Bob
+chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
+
+# chapter2BranchB look for jim alone
+chapter2BranchB.append('''It nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
+chapter2BranchB.append('''It would be great to take it with me, but I risk waking up someone.''')
+chapter2BranchB.append('''I don’t want to deal with anyone’s questions right now either.''')
+chapter2BranchB.append('''(Ch2Choice2) ''')
+
+# chapter 2 decide to take lantern 
+# Hill, Yuma, Cody dies
+chapter2TakeLantern.append('''You take the lantern and start making your way out of the camp leaving the camp without any light.''')
+chapter2TakeLantern.append('''It didn't take very long when I start to smell something most foul.''')
+chapter2TakeLantern.append('''It's then when you find Jim.''')
+chapter2TakeLantern.append('''Jim is on the floor eviscerated I almost can't tell it's him but becuase of the clothing it's obvious it's Jim.''')
+chapter2TakeLantern.append('''I grab my stomach and get a rush of vomit spewing out of my mouth.''')
+chapter2TakeLantern.append('''After I get myself together and come to the realization that Jim is gone I decide I need to hurry back to tell everyone wants become of Jim.''')
+chapter2TakeLantern.append('''Just then I hear screams coming back from camp.''')
+chapter2TakeLantern.append('''I started to run back to camp something must be wrong maybe the killer got someone else I thought''')
+chapter2TakeLantern.append('''As I reached the camp I was horrified at the sight!''')
+chapter2TakeLantern.append('''You see a variety of human body parts and blood everywhere.''')
+chapter2TakeLantern.append('''All around are theses humanoid creatures, luckily they haven\'t spotted you are to busy tearing and eating your fellow crew mates.''')
+chapter2TakeLantern.append('''You slowly drop the lantern to not give your position away and slowly turn to leave the sight but just as you turned around one of the creatures was standing behide you and is looking ready to tear you open.''')
+chapter2TakeLantern.append('''(Battle:mutant)''')
+
+# chapter2BranchC wake everyone up to find jim 
+chapter2BranchC.append('''I start to wake everyone up to find Jim''')
 
 # chapter1
 chapter1.append('''You wake up to a very loud alarm 
@@ -235,12 +341,15 @@ chapter1.append('''Jim: “I\'ll do the same. Let’s watch each other's backs.�
 chapter1.append('''I walked back over to Bob ''')
 chapter1.append('''Bob: “What happened? Is everything alright between you two?” ''')
 chapter1.append('''(Ch1Choice2) ''')
-chapter1.append('''Just as we are finishing packing Joule begins to wave and speak loudly to get our attention''')
-chapter1.append('''Joule: “Ok everyone seems like we are ready to go so let us begin.” ''')
-chapter1.append('''We begin heading into the first passage. The path will slowly elevate us upwards until we reach the resting post. We set up there and continue our journey the next day. It should take us roughly 4 days to reach the sewers. We should be able to reach a resting post each day until we finally reach the surface. ''')
-chapter1.append('''As we approach the first resting post, I realize that Cody\'s breathing is irregular, almost anxious. It could just be nerves getting to him, but what Jim told me still weighs heavily in my mind. ''')
-chapter1.append('''Come to think of it I\'ve never been on an expedition with Cody before. I’ve only ever encountered him around the city. I have been told about his expeditions before, but never anything in detail. ''')
 
+# chapter 1 part 2
+chapter1Part2.append('''Just as we are finishing packing Joule begins to wave and speak loudly to get our attention''')
+chapter1Part2.append('''Joule: “Ok everyone seems like we are ready to go so let us begin.” ''')
+chapter1Part2.append('''We begin heading into the first passage. The path will slowly elevate us upwards until we reach the resting post. We set up there and continue our journey the next day. It should take us roughly 4 days to reach the sewers. We should be able to reach a resting post each day until we finally reach the surface. ''')
+chapter1Part2.append('''As we approach the first resting post, I realize that Cody\'s breathing is irregular, almost anxious. It could just be nerves getting to him, but what Jim told me still weighs heavily in my mind. ''')
+chapter1Part2.append('''Come to think of it I\'ve never been on an expedition with Cody before. I’ve only ever encountered him around the city. I have been told about his expeditions before, but never anything in detail. ''')
+
+# chapter 2
 chapter2.append('''After a long day traveling through the underground we come to a stop. It\'s time for our rest. ''')
 chapter2.append('''Joule: “Alright everyone we are setting up here for the night. It’s a bit early for a rest stop, but the next closest rest site is too far to travel to in one day. Get all the rest you can because the next stop will take longer to reach.” ''')
 chapter2.append('''As everyone begins to pick out their sleeping spots, Jim and I decide to sleep close in case Joule tries anything (Maybe we can add Bob depending if the player told bob or not). I take one last look around and fall asleep. ''')
@@ -251,4 +360,5 @@ chapter2.append('''(Ch2Choice1) ''')
 
 
 DisplayStory(chapter1)
+DisplayStory(chapter1Part2)
 DisplayStory(chapter2)

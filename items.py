@@ -140,7 +140,43 @@ class gun(items):
 		
 	def amount(self):
 		return self.amountCount
+
+class takeLantern(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
 		
+	def itemName(self):
+		return "Take lantern"
+		
+	def displayText(self):
+		return "To take the lantern"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter2TakeLantern'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+# non-items------------------------------------------------------------------------------------------------		
 class jimSaid(items):
 	
 	def __init__(self):
@@ -251,3 +287,115 @@ class changeTopic(items):
 
 	def setBranchToFalse(self):
 		self.branch = False
+		
+class findJim(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Wake up Bob to help find Jim"
+		
+	def displayText(self):
+		return "You wake up Jim."
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter2BranchA'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+class findJimAlone(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Look for Jim alone"
+		
+	def displayText(self):
+		return "to not wake anyone up"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter2BranchB'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+class wakeEveryone(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Wake everyone up to help find Jim"
+		
+	def displayText(self):
+		return "wake everyone up"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter2BranchC'
+
+	def setBranchToFalse(self):
+		self.branch = False
+	
