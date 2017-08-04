@@ -21,6 +21,7 @@ it.append(items.findJim())
 it.append(items.findJimAlone())
 it.append(items.wakeEveryone())
 it.append(items.takeLantern())
+it.append(items.dontLantern())
 
 en.append(enemys.mutant())
 
@@ -171,6 +172,8 @@ def nextBranch():
 					DisplayStory(chapter2BranchC)	
 				elif(brh == 'chapter2TakeLantern'):
 					DisplayStory(chapter2TakeLantern)
+				elif(brh == 'chapter2DontTakeLantern'):
+					DisplayStory(chapter2DontTakeLantern)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -236,6 +239,7 @@ chapter2BranchA = []
 chapter2BranchB = []
 chapter2BranchC = []
 chapter2TakeLantern = []
+chapter2DontTakeLantern = []
 
 
 # chapter1
@@ -332,7 +336,11 @@ chapter2.append('''So, I decide to stay up for a bit and wait for Jim to come ba
 chapter2.append('''(Ch2Choice1) ''')
 
 # chapter2BranchA wake up Bob
-chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
+chapter2BranchA.append(playerName + ''': Hey Bob wake up.''')
+chapter2BranchA.append('''You quickly explain to Bob that Jim is missing.''')
+chapter2BranchA.append('''Bob agrees to help you look for Jim.''')
+chapter2BranchA.append('''Bob points over to the lantern sugguesting we take it with us to help light the way.''')
+chapter2BranchA.append('''(Ch2Choice2) ''')
 
 # chapter2BranchB look for jim alone
 chapter2BranchB.append('''It\' nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
@@ -359,6 +367,22 @@ chapter2TakeLantern.append('''All around the bloody scene humanoid creatures. Lu
 chapter2TakeLantern.append('''You slowly drop the lantern as to not give away your position and slowly turn to leave. However, just as you turn around you notice that a creature was just second away from getting the jump on you. The only hope for survival now is to stand and fight.''')
 chapter2TakeLantern.append('''(Battle:mutant)''')
 
+# chpater 2 decide to not take lantern
+# Yuma dies 
+chapter2DontTakeLantern.append('''You decide to leave the lantern where it is.''')
+chapter2DontTakeLantern.append('''as you leave the camp you begin to smell something most foul.''')
+chapter2DontTakeLantern.append('''Since your walking in complete darkness it\'s hard for you see anything and to pin point where the smell is coming from.''')
+chapter2DontTakeLantern.append('''After walking for some time you trip over something and almost fall to the floor.''')
+chapter2DontTakeLantern.append('''Just then you hear someone yelling coming back from the camp.''')
+chapter2DontTakeLantern.append('''"Everyone wake up! theres something here!"''')
+chapter2DontTakeLantern.append('''You start to rush back to camp without really thinking.''')
+chapter2DontTakeLantern.append('''Once you get closer to the camp you notice everyone running back in your direction and going past you.''')
+chapter2DontTakeLantern.append('''Back at the camp you can see someone getting shreded and torn to bits.''')
+chapter2DontTakeLantern.append('''In the heat of the moment you don\'t hesitate to stay any longer.''')
+chapter2DontTakeLantern.append('''As you turn around to start following everyone you notice that a creature was just second away from getting the jump on you!''')
+chapter2DontTakeLantern.append('''At this point you're not sure what to do but fight to stay alive''')
+chapter2DontTakeLantern.append('''(Battle:mutant)''')
+
 # chapter2BranchC wake everyone up to find jim 
 chapter2BranchC.append('''You decide to wake eveyone up.''')
 chapter2BranchC.append(playerName + ''': "Get up everyone! Jim and Joule are missing!''')
@@ -368,7 +392,10 @@ chapter2BranchC.append('''Cody: "I agree with '''+playerName+'''. I noticed that
 chapter2BranchC.append('''Tanner: "Alright fine! Let's hurry up and find them already. You can apologize for waking me up afterwards. Wake up Yuma!"''')
 chapter2BranchC.append('''Yuma: "...huh? What's going on? Why did you wake me up?" ''')
 chapter2BranchC.append('''Tanner: " Just get up and help look for Joule and Jim. '''+playerName+''' and Cody think they are in trouble, but I\'m sure they are overthinking it. The faster we bring them back the faster we can prove '''+playerName+''' and Cody are wrong and we can go back to sleep.''')
-
+chapter2BranchC.append('''Just then a rush of howls and screams start to come from all around the camp''')
+chapter2BranchC.append('''Creatures start to come out of the dark into the camp\'s light and start attacking''')
+chapter2BranchC.append('''You have no choice but to fight!''')
+chapter2BranchC.append('''(Battle:mutant)''')
 
 
 DisplayStory(chapter1)

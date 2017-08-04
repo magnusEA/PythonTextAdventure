@@ -176,6 +176,41 @@ class takeLantern(items):
 	def setBranchToFalse(self):
 		self.branch = False
 		
+class dontLantern(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Leave lantern"
+		
+	def displayText(self):
+		return "To leave the lantern"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter2DontTakeLantern'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
 # non-items------------------------------------------------------------------------------------------------		
 class jimSaid(items):
 	
