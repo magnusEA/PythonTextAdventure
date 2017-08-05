@@ -224,15 +224,18 @@ def branchThis():
 	codyAlive = False
 	
 	for x in it:
-		if(x.itemName() == 'Wake up Bob to help find Jim'):
+		if(x.itemName() == 'Wake up Bob to help find Jim' and x.isUsable()):
 			bobAlive = True
-		elif(x.itemName() == 'Take lantern'):
+			
+		elif(x.itemName() == 'Take lantern' and x.isUsable()):
 			tannerAlive = True
-		elif(x.itemName() == 'Leave lantern'):
+			
+		elif(x.itemName() == 'Leave lantern' and x.isUsable()):
 			hillAlive = True
 			codyAlive = True
 			tannerAlive = True
-		elif(x.itemName() == 'Wake everyone up to help find Jim'):
+			
+		elif(x.itemName() == 'Wake everyone up to help find Jim' and x.isUsable()):
 			bobAlive = True
 			
 	# if all dead do this 
