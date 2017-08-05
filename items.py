@@ -433,4 +433,78 @@ class wakeEveryone(items):
 
 	def setBranchToFalse(self):
 		self.branch = False
+		
+class hillUseExp(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Let Hill use explosives"
+		
+	def displayText(self):
+		return "To let Hill use the explosives"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chpater3UseHillExp'
+
+	def setBranchToFalse(self):
+		self.branch = False
 	
+	
+class hillDonExp(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Don\'t let Hill use his explosives"
+		
+	def displayText(self):
+		return "Not to let Hill use explosives"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chpater3DonUseExp'
+
+	def setBranchToFalse(self):
+		self.branch = False

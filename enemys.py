@@ -1,6 +1,6 @@
 class mutant:
 		def __init__(self):
-			self.health = 100
+			self.health = 10
 		
 		def name(self):
 			return 'mutant'

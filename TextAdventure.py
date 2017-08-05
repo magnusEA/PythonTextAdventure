@@ -22,6 +22,8 @@ it.append(items.findJimAlone())
 it.append(items.wakeEveryone())
 it.append(items.takeLantern())
 it.append(items.dontLantern())
+it.append(items.hillUseExp())
+it.append(items.hillDonExp())
 
 en.append(enemys.mutant())
 
@@ -174,6 +176,10 @@ def nextBranch():
 					DisplayStory(chapter2TakeLantern)
 				elif(brh == 'chapter2DontTakeLantern'):
 					DisplayStory(chapter2DontTakeLantern)
+				elif(brh == 'chpater3HillAlivePart1'):
+					DisplayStory(chpater3HillAlivePart1)
+				elif(brh == 'chpater3DonUseExp'):
+					DisplayStory(chpater3DonUseExp)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -209,6 +215,44 @@ def userInput():
 		return
 		
 	#otherwise do nothing 
+
+def branchThis():
+	bobAlive = False
+	tannerAlive = False
+	hillAlive = False
+	yumaAlive = False
+	codyAlive = False
+	
+	for x in it:
+		if(x.itemName() == 'Wake up Bob to help find Jim'):
+			bobAlive = True
+		elif(x.itemName() == 'Take lantern'):
+			tannerAlive = True
+		elif(x.itemName() == 'Leave lantern'):
+			hillAlive = True
+			codyAlive = True
+			tannerAlive = True
+		elif(x.itemName() == 'Wake everyone up to help find Jim'):
+			bobAlive = True
+			
+	# if all dead do this 
+	if(bobAlive and tannerAlive == False and hillAlive == False and yumaAlive == False and codyAlive == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3BobAlivePart3)
+		
+	elif(bobAlive and tannerAlive and hillAlive == False and codyAlive == False and yumaAlive == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3TannerAlivePart1)
+		DisplayStory(chapter3BobAlivePart3)
+	elif(bobAlive and tannerAlive and hillAlive == True and codyAlive == True and yumaAlive == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3CodyAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3TannerAlivePart1)
+		DisplayStory(chapter3BobAlivePart3)
+		DisplayStory(chpater3HillAlivePart1)
 	
 # append all choice actions in dict
 choiceAction = {
@@ -222,7 +266,8 @@ choices = {
 'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A',
 'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B',
 'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C',
-'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C'
+'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C',
+'Ch3Choice1': 'Should I: 1. Let Hill use explosives, 2. Don\'t let Hill use his explosives, 3.C' 
 }
 		
 # append all story (list for each branch of story)
@@ -240,6 +285,14 @@ chapter2BranchB = []
 chapter2BranchC = []
 chapter2TakeLantern = []
 chapter2DontTakeLantern = []
+chapter3BobAlivePart1 = []
+chapter3BobAlivePart2 = []
+chapter3BobAlivePart3 = []
+chapter3CodyAlivePart1 = []
+chapter3TannerAlivePart1 = []
+chpater3HillAlivePart1 = []
+chpater3UseHillExp = []
+chpater3DonUseExp = []
 
 
 # chapter1
@@ -397,7 +450,60 @@ chapter2BranchC.append('''Creatures start to come out of the dark into the camp\
 chapter2BranchC.append('''You have no choice but to fight!''')
 chapter2BranchC.append('''(Battle:mutant)''')
 
+# chapter3 if Bob is alive part 1
+chapter3BobAlivePart1.append('''Bob: “I didn’t really get a good look at them but the smell… it was terrible. Like something rotting."''')
+chapter3BobAlivePart1.append('''Bob: One minute we were looking for Joule and Jim then the next minute Yuma\’s head was just… gone.”''')
+chapter3BobAlivePart1.append('''Bob: “I didn’t even see what took it…”''')
+
+# chpater3 if Bob is alive part 2
+chapter3BobAlivePart2.append(playerName + ''': “This is my fault. I caused this.”''')
+chapter3BobAlivePart2.append('''Bob: “This is not your fault. Those things would have attacked regardless if we were awake or asleep. We wouldn’t be alive if it weren’t for you.”''') 
+
+# chpater3 if Bob is alive part 3
+chapter3BobAlivePart3.append(playerName + ''': “I guess things could have been worse… We should keep moving. There might be more of those things around.”''') 
+chapter3BobAlivePart3.append('''Bob: “Right let\ ’s go.”''')
+chapter3BobAlivePart3.append('''The party continues to make their way through the dark tunnel. Without a primary light source they are forced to rely on a few matches that they have. Their supply is dwindling.''') 
+chapter3BobAlivePart3.append('''They eventually come up on an elevator that was built the same time the underground city was built.''')
+chapter3BobAlivePart3.append('''It was meant to be a convenient way for people to come and go from the underground city to the surface.''')
+chapter3BobAlivePart3.append('''However, the blasts on the surface caused a lot of cave ins.''')
+chapter3BobAlivePart3.append('''Because the construction of the tunnels wasn’t fully done, they couldn’t withstand the impacts and shocks of the explosions. This is what lead to the creation of the expedition teams to dig a path back to the surface.''')
+chapter3BobAlivePart3.append('''Bob: “This elevator will take us up all the way to the sewers. From there it won\’t take us long to reach the surface.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Awesome, but where is the elevator?”''')
+chapter3BobAlivePart3.append('''Bob: “The elevator should still be down here. The last expedition team used it to come back to underground city. There shouldn’t be anyone else using the elevator besides us…”''')
+chapter3BobAlivePart3.append(playerName + ''': “Do you think someone survived the attack and somehow got ahead of us?”''')
+chapter3BobAlivePart3.append('''Bob: “I don\’t know, but let’s try to bring it down. There is a crank we need to turn. It takes a few minutes to power up the elevator.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Alright. Let’s get to work!”''')
+chapter3BobAlivePart3.append('''Bob: “Ok. I\’ll start cranking. Keep an eye out in case those things come back.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Right.”''')
+chapter3BobAlivePart3.append('''As Bob turns the crank it begins to make a loud noise. It sounds like old rusted gears turning.The noise echoes loudly throughout the area. Bob and playerName look at each other and quickly realize that those monsters are probably headed their way because of the noise. Bob rushes to turn the crank faster to try and speed up the process.''')
+chapter3BobAlivePart3.append('''In the distance you begin to hear someone screaming in the distance. Bob continues to turn the crank.''')
+
+# chapter 3 if Cody is alive part 1
+chapter3CodyAlivePart1.append('''Cody: “Whatever they where they couldn't have been human they looked to deformed.”''')
+
+# chpater 3 if Tanner is alive part 1
+chapter3TannerAlivePart1.append('''Tanner: “Yeah don\'t feel bad with my gun here they’ll be no problems when it comes down to dealing with those beasts will make it to the surface no problem now that I know there is something out there I won’t let it get to us so easily.” ''')
+
+# chapter 3 if Hill is alive part 1
+chpater3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
+chpater3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
+chpater3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
+chpater3HillAlivePart1.append('''Hill: “Ok that should be good!”''')
+chpater3HillAlivePart1.append('''Tanner: “What are you planning on doing??''')
+chpater3HillAlivePart1.append('''Hill: “Saving our lives! This will stop them in their tracks before getting to us.”''')
+chpater3HillAlivePart1.append(''''Tanner: “But isn\’t there a chance we could also be caved in with them??”''')
+chpater3HillAlivePart1.append('''Hill: “That’s a chance I\’m willing to take. If they get to us there is no way we\’ll make it out of here alive. Just trust me on this!”''')
+chpater3HillAlivePart1.append('''Tanner: "''' + playerName + ''' you aren't really gonna let Hill kill us are you???”''')
+chpater3HillAlivePart1.append('''Cody: “I\’d rather take my chances with the explosion than getting torn up by those monsters.”''')
+chpater3HillAlivePart1.append('''(Ch3Choice1)''')
+
+# let hill use explosives
+chpater3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
+
+# don't let hill use explosives
+chpater3DonUseExp.append('''Hill doesn\'t use explosives''')
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
 DisplayStory(chapter2)
+branchThis()
