@@ -176,10 +176,12 @@ def nextBranch():
 					DisplayStory(chapter2TakeLantern)
 				elif(brh == 'chapter2DontTakeLantern'):
 					DisplayStory(chapter2DontTakeLantern)
-				elif(brh == 'chpater3HillAlivePart1'):
-					DisplayStory(chpater3HillAlivePart1)
-				elif(brh == 'chpater3DonUseExp'):
-					DisplayStory(chpater3DonUseExp)
+				elif(brh == 'chapter3HillAlivePart1'):
+					DisplayStory(chapter3HillAlivePart1)
+				elif(brh == 'chapter3DonUseExp'):
+					DisplayStory(chapter3DonUseExp)
+				elif(brh == 'chapter3UseHillExp'):
+					DisplayStory(chapter3UseHillExp)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -293,9 +295,9 @@ chapter3BobAlivePart2 = []
 chapter3BobAlivePart3 = []
 chapter3CodyAlivePart1 = []
 chapter3TannerAlivePart1 = []
-chpater3HillAlivePart1 = []
-chpater3UseHillExp = []
-chpater3DonUseExp = []
+chapter3HillAlivePart1 = []
+chapter3UseHillExp = []
+chapter3DonUseExp = []
 
 
 # chapter1
@@ -488,24 +490,44 @@ chapter3CodyAlivePart1.append('''Cody: “Whatever they where they couldn't have
 chapter3TannerAlivePart1.append('''Tanner: “Yeah don\'t feel bad with my gun here they’ll be no problems when it comes down to dealing with those beasts will make it to the surface no problem now that I know there is something out there I won’t let it get to us so easily.” ''')
 
 # chapter 3 if Hill is alive part 1
-chpater3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
-chpater3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
-chpater3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
-chpater3HillAlivePart1.append('''Hill: “Ok that should be good!”''')
-chpater3HillAlivePart1.append('''Tanner: “What are you planning on doing??''')
-chpater3HillAlivePart1.append('''Hill: “Saving our lives! This will stop them in their tracks before getting to us.”''')
-chpater3HillAlivePart1.append(''''Tanner: “But isn\’t there a chance we could also be caved in with them??”''')
-chpater3HillAlivePart1.append('''Hill: “That’s a chance I\’m willing to take. If they get to us there is no way we\’ll make it out of here alive. Just trust me on this!”''')
-chpater3HillAlivePart1.append('''Tanner: "''' + playerName + ''' you aren't really gonna let Hill kill us are you???”''')
-chpater3HillAlivePart1.append('''Cody: “I\’d rather take my chances with the explosion than getting torn up by those monsters.”''')
-chpater3HillAlivePart1.append('''(Ch3Choice1)''')
+chapter3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
+chapter3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
+chapter3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
+chapter3HillAlivePart1.append('''Hill: “Ok that should be good!”''')
+chapter3HillAlivePart1.append('''Tanner: “What are you planning on doing??''')
+chapter3HillAlivePart1.append('''Hill: “Saving our lives! This will stop them in their tracks before getting to us.”''')
+chapter3HillAlivePart1.append(''''Tanner: “But isn\’t there a chance we could also be caved in with them??”''')
+chapter3HillAlivePart1.append('''Hill: “That’s a chance I\’m willing to take. If they get to us there is no way we\’ll make it out of here alive. Just trust me on this!”''')
+chapter3HillAlivePart1.append('''Tanner: "''' + playerName + ''' you aren't really gonna let Hill kill us are you???”''')
+chapter3HillAlivePart1.append('''Cody: “I\’d rather take my chances with the explosion than getting torn up by those monsters.”''')
+chapter3HillAlivePart1.append('''(Ch3Choice1)''')
 
-# let hill use explosives
-chpater3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
+# let hill use explosives Hill and Cody lives 
+chapter3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
+chapter3UseHillExp.append('''Cody: “I won\'t let you fight them on your own!”''')
+chapter3UseHillExp.append('''Cody joins in the fray and begins firing his pistol.''')
+chapter3UseHillExp.append('''(Battle:mutant)''')
+chapter3UseHillExp.append('''They put up a fight and are able to keep them at bay long enough for the elevator to come down. I quickly get inside and yell to Bob.''')
+chapter3UseHillExp.append(playerName + ''': “Hurry! Get in! The elevators here!”''')
 
-# don't let hill use explosives
-chpater3DonUseExp.append('''Hill doesn\'t use explosives''')
-chpater3DonUseExp.append('''Hill dies''')
+# don't let hill use explosives Hill & Cody dies 
+chapter3DonUseExp.append('''Hill doesn\'t use explosives''')
+chapter3DonUseExp.append('''The more Bob turns the crank the louder the screams get.''')
+chapter3DonUseExp.append('''You can feel your heart pounding. You just want to run and hide, but the only place to go is back where the screams are coming from.''')
+chapter3DonUseExp.append('''As the screams get louder so do the gears. Bob is pushing himself to turn the crank as fast as he possibly can.''')
+chapter3DonUseExp.append('''Just as the crank stops turning you hear a generator turning on. A small low lit light come on.''')
+chapter3DonUseExp.append('''The console for the elevator is now lit. Bob quickly presses the call button.''')
+chapter3DonUseExp.append('''Both you and Bob turn and face the direction that the screams are coming from.  It\'s pitch black and you can’t make anything out.''')
+chapter3DonUseExp.append('''You look up and you can barely see what you think is the elevator coming down.''')
+chapter3DonUseExp.append('''Then you hear a scream. It sounds like they are only a few feet away from you.''')
+chapter3DonUseExp.append('''You begin to smell a rotten odor that makes you want to vomit, but you\'re too scared to.''')
+chapter3DonUseExp.append('''Finally they reach you. You can  almost see them clearly. They look human, but their flesh is green, bubbly, and falling off. Their eyes are gone and some still have them dangling out of their sockets. Some are missing their limbs. Their mouth dripping with blood and other body fluids.''')
+chapter3DonUseExp.append('''You think to yourself “this is it. It’s over.”''')
+chapter3DonUseExp.append('''But just then Bob looks toward you and says''')
+chapter3DonUseExp.append('''Bob: “It\'s been an honor to have been by your side for so long, but I won\'t let them take you like they’ve taken everyone else”''')
+chapter3DonUseExp.append('''Bob pulls out a small knife and runs between those mutants.''')
+chapter3DonUseExp.append('''Bob begins fighting off the mass horde of mutations.''')
+
 
 # Hill dies
 

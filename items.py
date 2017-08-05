@@ -466,7 +466,7 @@ class hillUseExp(items):
 		return self.amountCount
 		
 	def getBranch(self):
-		return 'chpater3UseHillExp'
+		return 'chapter3UseHillExp'
 
 	def setBranchToFalse(self):
 		self.branch = False
@@ -504,7 +504,7 @@ class hillDonExp(items):
 		return self.amountCount
 		
 	def getBranch(self):
-		return 'chpater3DonUseExp'
+		return 'chapter3DonUseExp'
 
 	def setBranchToFalse(self):
 		self.branch = False
