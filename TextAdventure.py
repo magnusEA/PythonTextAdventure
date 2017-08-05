@@ -505,6 +505,9 @@ chpater3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
 
 # don't let hill use explosives
 chpater3DonUseExp.append('''Hill doesn\'t use explosives''')
+chpater3DonUseExp.append('''Hill dies''')
+
+# Hill dies
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
