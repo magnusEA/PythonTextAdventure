@@ -186,7 +186,7 @@ def nextBranch():
 				elif(brh == 'chapter2BranchB'):
 					chrBob.setDead()
 					DisplayStory(chapter2BranchB)
-				elif(brh == 'chapter2BranchC'):
+				elif(brh == 'chapter2BranchC'): # everyone wakes up 
 					chrHill.setDead()
 					chrYuma.setDead()
 					chrCody.setDead()
@@ -342,6 +342,9 @@ chapter3HillNotAlive = []
 chapter3HillAlivePart1 = []
 chapter3UseHillExp = []
 chapter3DonUseExp = []
+chapter4Part1 = []
+chapter4IfCodyAlivePart1 = []
+chapter4IfCodyDeadPart1 = []
 
 
 # chapter1
@@ -613,8 +616,25 @@ chapter3HillNotAlive.append('''Bob: “It\'s been an honor to have been by your 
 chapter3HillNotAlive.append('''Bob pulls out a small knife and runs between those mutants''')
 chapter3HillNotAlive.append('''Bob begins fighting off the mass horde of mutations''')
 
+# chapter 4 part 1
+chapter4Part1.append('''The elevator begins to slow down. It eventually comes to a stop and the doors begin to open. The first thing you notice are the lights hanging on the ceiling.''')
+chapter4Part1.append('''You think to yourself “there\'s a lot more light than I would have imagined and I haven’t even reached the surface yet.”''')
+
+# chapter 4 if cody alive
+chapter4IfCodyAlivePart1.append('''Just as you are about to take the first step out of the elevator, Cody grabs and pulls you back in.''')
+chapter4IfCodyAlivePart1.append('''Cody: “Wait. The sewage water is probably not safe to stand in. It could be radiated. Try to avoid stepping in the sewage water as much as possible. Stick to the sides, there's no water there.”''')
+chapter4IfCodyAlivePart1.append('''Everyone begins to make their way out of the elevator being careful to not set foot in the sewage water. Then the foul odor beings to hit you. “This is definitely the sewers,” you think to yourself, “Who knows how many things have died here.”''')
+
+chapter4IfCodyDeadPart1.append('''You begin take a few steps outside of the elevator. Your foot lands in sewage water. A foul odor hits you.  “This is definitely the sewers,” you think to yourself, “Who knows how many things have died here.”''')
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
 DisplayStory(chapter2)
 branchThis()
+DisplayStory(chapter4Part1)
+
+if(chrCody.getAlive()):
+	DisplayStory(chapter4IfCodyAlivePart1)
+else: # cody is dead 
+	DisplayStory(chapter4IfCodyDeadPart1)
+	
