@@ -262,7 +262,7 @@ def branchThis():
 		#if Tanner is dead
 		k.setInInv() # get knife 
 		print '''Bob turns toward me trying to get away, but it’s too late. He is to deep between them and they won’t let him get away. Bob throws his knife at me and says “I hope this will help protect you”'''
-		print '''Bob turns and gives me one last look as one of the mutants grabs his arm and rips it off with ungodly strength. The rest begin to jump on top of Bob. I only see pieces of him getting shared about between the mutants.''')
+		print '''Bob turns and gives me one last look as one of the mutants grabs his arm and rips it off with ungodly strength. The rest begin to jump on top of Bob. I only see pieces of him getting shared about between the mutants.'''
 		print '''I hit the button to go up. As I leave all I could think about was the surface. I have to get to the surface no matter what!'''
 		
 	elif(chrBob.getAlive() and chrTanner.getAlive() and chrHill.getAlive() == False and chrCody.getAlive() == False and chrYuma.getAlive() == False):
