@@ -335,17 +335,13 @@ chapter3BobAlivePart3 = []
 chapter3BobAlivePart4 = []
 chapter3CodyAlivePart1 = []
 chapter3TannerAlivePart1 = []
-<<<<<<< HEAD
 chpater3HillAlivePart1 = []
 chpater3UseHillExp = []
 chpater3DonUseExp = []
 chapter3HillNotAlive = []
-
-=======
 chapter3HillAlivePart1 = []
 chapter3UseHillExp = []
 chapter3DonUseExp = []
->>>>>>> origin/MalstarAdventureBranch
 
 
 # chapter1
@@ -544,7 +540,6 @@ chapter3CodyAlivePart1.append('''Cody: “Whatever they where they couldn't have
 chapter3TannerAlivePart1.append('''Tanner: “Yeah don\'t feel bad with my gun here they’ll be no problems when it comes down to dealing with those beasts will make it to the surface no problem now that I know there is something out there I won’t let it get to us so easily.” ''')
 
 # chapter 3 if Hill is alive part 1
-<<<<<<< HEAD
 chpater3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
 chpater3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
 chpater3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
@@ -563,7 +558,7 @@ chpater3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
 # don't let hill use explosives Hill & Cody die 
 chpater3DonUseExp.append('''Hill doesn\'t use explosives''')
 chpater3DonUseExp.append('''Hill dies''')
-=======
+
 chapter3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
 chapter3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
 chapter3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
@@ -601,8 +596,6 @@ chapter3DonUseExp.append('''But just then Bob looks toward you and says''')
 chapter3DonUseExp.append('''Bob: “It\'s been an honor to have been by your side for so long, but I won\'t let them take you like they’ve taken everyone else”''')
 chapter3DonUseExp.append('''Bob pulls out a small knife and runs between those mutants.''')
 chapter3DonUseExp.append('''Bob begins fighting off the mass horde of mutations.''')
-
->>>>>>> origin/MalstarAdventureBranch
 
 # Hill dies
 chapter3HillNotAlive.append('''The more Bob turns the crank the louder the screams get.''')
