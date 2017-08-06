@@ -4,7 +4,14 @@
 import items
 import playerStatus
 import enemys
+import characters
 displayMessage = True
+
+# bobAlive = True
+# tannerAlive = True
+# hillAlive = True
+# yumaAlive = True
+# codyAlive = True
 
 # append classes (will use a list to contain all classes within a list) 
 it = []
@@ -21,8 +28,19 @@ it.append(items.findJim())
 it.append(items.findJimAlone())
 it.append(items.wakeEveryone())
 it.append(items.takeLantern())
+it.append(items.dontLantern())
+it.append(items.hillUseExp())
+it.append(items.hillDonExp())
 
 en.append(enemys.mutant())
+
+chrBob = characters.Bob()
+chrTanner = characters.Tanner()
+chrHill = characters.Hill()
+chrYuma = characters.Yuma()
+chrCody = characters.Cody()
+
+k = items.knife()
 
 def RunChoice(pickChoice):
 	displayChoice = choices[pickChoice]
@@ -166,11 +184,28 @@ def nextBranch():
 				elif(brh == 'chapter2BranchA'):
 					DisplayStory(chapter2BranchA)
 				elif(brh == 'chapter2BranchB'):
+					chrBob.setDead()
 					DisplayStory(chapter2BranchB)
-				elif(brh == 'chapter2BranchC'):
+				elif(brh == 'chapter2BranchC'): # everyone wakes up 
+					chrHill.setDead()
+					chrYuma.setDead()
+					chrCody.setDead()
+					chrTanner.setDead()
 					DisplayStory(chapter2BranchC)	
 				elif(brh == 'chapter2TakeLantern'):
+					chrHill.setDead()
+					chrYuma.setDead()
+					chrCody.setDead()
 					DisplayStory(chapter2TakeLantern)
+				elif(brh == 'chapter2DontTakeLantern'):
+					chrYuma.setDead()
+					DisplayStory(chapter2DontTakeLantern)
+				elif(brh == 'chapter3HillAlivePart1'):
+					DisplayStory(chapter3HillAlivePart1)
+				elif(brh == 'chapter3DonUseExp'):
+					DisplayStory(chapter3DonUseExp)
+				elif(brh == 'chapter3UseHillExp'):
+					DisplayStory(chapter3UseHillExp)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -206,6 +241,62 @@ def userInput():
 		return
 		
 	#otherwise do nothing 
+
+def branchThis():
+	
+	# if all dead but Bob do this 
+	if(chrBob.getAlive() and chrTanner.getAlive() == False and chrHill.getAlive() == False and chrYuma.getAlive() == False and chrCody.getAlive() == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3BobAlivePart3)
+		DisplayStory(chapter3HillNotAlive)
+		DisplayStory(chapter3BobAlivePart4)
+		
+		#if Tanner is dead
+		k.setInInv() # get knife 
+		print '''Bob turns toward me trying to get away, but it’s too late. He is to deep between them and they won’t let him get away. Bob throws his knife at me and says “I hope this will help protect you”'''
+		print '''Bob turns and gives me one last look as one of the mutants grabs his arm and rips it off with ungodly strength. The rest begin to jump on top of Bob. I only see pieces of him getting shared about between the mutants.'''
+		print '''I hit the button to go up. As I leave all I could think about was the surface. I have to get to the surface no matter what!'''
+		
+	elif(chrBob.getAlive() and chrTanner.getAlive() and chrHill.getAlive() == False and chrCody.getAlive() == False and chrYuma.getAlive() == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3TannerAlivePart1)
+		DisplayStory(chapter3BobAlivePart3)
+		DisplayStory(chapter3HillNotAlive)
+		DisplayStory(chapter3BobAlivePart4)
+		# if Tanner is alive
+		print '''Tanner and Bob rush into the elevator. Just before they reach it, one of the mutants lunges forward trying to get into the elevator.'''
+		print '''However, Tanner shoots it right in its head and pushes it off. I hit the button to go up. The elevator door closes and we ride it up to the top.'''
+		
+	# If everyone is alive but Yuma
+	elif(chrBob.getAlive() and chrTanner.getAlive() and chrHill.getAlive() and chrCody.getAlive() == True and chrYuma.getAlive() == False):
+		DisplayStory(chapter3BobAlivePart1)
+		DisplayStory(chapter3CodyAlivePart1)
+		DisplayStory(chapter3BobAlivePart2)
+		DisplayStory(chapter3TannerAlivePart1)
+		DisplayStory(chapter3BobAlivePart3)
+		
+		# if hill is alive 
+		if(chrHill.getAlive() == True):
+			DisplayStory(chpater3HillAlivePart1)
+		# else if hill is dead 
+		elif(chrHill.getAlive() == False):
+			DisplayStory(chapter3HillNotAlive)
+			
+		# if Cody is alive 
+		if(chrCody.getAlive() == True):
+			print '''Cody: “I won’t let you fight them on your own!”'''
+			print '''Cody joins in the fray and begins firing his pistol!'''
+		
+		DisplayStory(chapter3BobAlivePart4)
+		
+		# if Tanner is alive
+		print '''Tanner and Bob rush into the elevator. Just before they reach it, one of the mutants lunges forward trying to get into the elevator.'''
+		print '''However, Tanner shoots it right in its head and pushes it off. I hit the button to go up. The elevator door closes and we ride it up to the top.'''
+			
+		
+			
 	
 # append all choice actions in dict
 choiceAction = {
@@ -219,7 +310,8 @@ choices = {
 'Ch1Choice1': 'I can take: 1. Medicine, 2. Bandages, 3. Flashlight, 4. Gun, 5.A',
 'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B',
 'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C',
-'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C'
+'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C',
+'Ch3Choice1': 'Should I: 1. Let Hill use explosives, 2. Don\'t let Hill use his explosives, 3.C' 
 }
 		
 # append all story (list for each branch of story)
@@ -236,6 +328,23 @@ chapter2BranchA = []
 chapter2BranchB = []
 chapter2BranchC = []
 chapter2TakeLantern = []
+chapter2DontTakeLantern = []
+chapter3BobAlivePart1 = []
+chapter3BobAlivePart2 = []
+chapter3BobAlivePart3 = []
+chapter3BobAlivePart4 = []
+chapter3CodyAlivePart1 = []
+chapter3TannerAlivePart1 = []
+chpater3HillAlivePart1 = []
+chpater3UseHillExp = []
+chpater3DonUseExp = []
+chapter3HillNotAlive = []
+chapter3HillAlivePart1 = []
+chapter3UseHillExp = []
+chapter3DonUseExp = []
+chapter4Part1 = []
+chapter4IfCodyAlivePart1 = []
+chapter4IfCodyDeadPart1 = []
 
 
 # chapter1
@@ -332,7 +441,11 @@ chapter2.append('''So, I decide to stay up for a bit and wait for Jim to come ba
 chapter2.append('''(Ch2Choice1) ''')
 
 # chapter2BranchA wake up Bob
-chapter2BranchA.append(playerName + ''': Hey Bob wake up''')
+chapter2BranchA.append(playerName + ''': Hey Bob wake up.''')
+chapter2BranchA.append('''You quickly explain to Bob that Jim is missing.''')
+chapter2BranchA.append('''Bob agrees to help you look for Jim.''')
+chapter2BranchA.append('''Bob points over to the lantern sugguesting we take it with us to help light the way.''')
+chapter2BranchA.append('''(Ch2Choice2) ''')
 
 # chapter2BranchB look for jim alone
 chapter2BranchB.append('''It\' nearly pitch black except for the small glow radiating from the lantern in the middle of everyone sleeping.''')
@@ -359,6 +472,22 @@ chapter2TakeLantern.append('''All around the bloody scene humanoid creatures. Lu
 chapter2TakeLantern.append('''You slowly drop the lantern as to not give away your position and slowly turn to leave. However, just as you turn around you notice that a creature was just second away from getting the jump on you. The only hope for survival now is to stand and fight.''')
 chapter2TakeLantern.append('''(Battle:mutant)''')
 
+# chpater 2 decide to not take lantern
+# Yuma dies 
+chapter2DontTakeLantern.append('''You decide to leave the lantern where it is.''')
+chapter2DontTakeLantern.append('''as you leave the camp you begin to smell something most foul.''')
+chapter2DontTakeLantern.append('''Since your walking in complete darkness it\'s hard for you see anything and to pin point where the smell is coming from.''')
+chapter2DontTakeLantern.append('''After walking for some time you trip over something and almost fall to the floor.''')
+chapter2DontTakeLantern.append('''Just then you hear someone yelling coming back from the camp.''')
+chapter2DontTakeLantern.append('''"Everyone wake up! theres something here!"''')
+chapter2DontTakeLantern.append('''You start to rush back to camp without really thinking.''')
+chapter2DontTakeLantern.append('''Once you get closer to the camp you notice everyone running back in your direction and going past you.''')
+chapter2DontTakeLantern.append('''Back at the camp you can see someone getting shreded and torn to bits.''')
+chapter2DontTakeLantern.append('''In the heat of the moment you don\'t hesitate to stay any longer.''')
+chapter2DontTakeLantern.append('''As you turn around to start following everyone you notice that a creature was just second away from getting the jump on you!''')
+chapter2DontTakeLantern.append('''At this point you're not sure what to do but fight to stay alive''')
+chapter2DontTakeLantern.append('''(Battle:mutant)''')
+
 # chapter2BranchC wake everyone up to find jim 
 chapter2BranchC.append('''You decide to wake eveyone up.''')
 chapter2BranchC.append(playerName + ''': "Get up everyone! Jim and Joule are missing!''')
@@ -368,9 +497,144 @@ chapter2BranchC.append('''Cody: "I agree with '''+playerName+'''. I noticed that
 chapter2BranchC.append('''Tanner: "Alright fine! Let's hurry up and find them already. You can apologize for waking me up afterwards. Wake up Yuma!"''')
 chapter2BranchC.append('''Yuma: "...huh? What's going on? Why did you wake me up?" ''')
 chapter2BranchC.append('''Tanner: " Just get up and help look for Joule and Jim. '''+playerName+''' and Cody think they are in trouble, but I\'m sure they are overthinking it. The faster we bring them back the faster we can prove '''+playerName+''' and Cody are wrong and we can go back to sleep.''')
+chapter2BranchC.append('''Just then a rush of howls and screams start to come from all around the camp''')
+chapter2BranchC.append('''Creatures start to come out of the dark into the camp\'s light and start attacking''')
+chapter2BranchC.append('''You have no choice but to fight!''')
+chapter2BranchC.append('''(Battle:mutant)''')
+
+# chapter3 if Bob is alive part 1
+chapter3BobAlivePart1.append('''Bob: “I didn’t really get a good look at them but the smell… it was terrible. Like something rotting."''')
+chapter3BobAlivePart1.append('''Bob: One minute we were looking for Joule and Jim then the next minute Yuma\’s head was just… gone.”''')
+chapter3BobAlivePart1.append('''Bob: “I didn’t even see what took it…”''')
+
+# chpater3 if Bob is alive part 2
+chapter3BobAlivePart2.append(playerName + ''': “This is my fault. I caused this.”''')
+chapter3BobAlivePart2.append('''Bob: “This is not your fault. Those things would have attacked regardless if we were awake or asleep. We wouldn’t be alive if it weren’t for you.”''') 
+
+# chpater3 if Bob is alive part 3
+chapter3BobAlivePart3.append(playerName + ''': “I guess things could have been worse… We should keep moving. There might be more of those things around.”''') 
+chapter3BobAlivePart3.append('''Bob: “Right let\ ’s go.”''')
+chapter3BobAlivePart3.append('''The party continues to make their way through the dark tunnel. Without a primary light source they are forced to rely on a few matches that they have. Their supply is dwindling.''') 
+chapter3BobAlivePart3.append('''They eventually come up on an elevator that was built the same time the underground city was built.''')
+chapter3BobAlivePart3.append('''It was meant to be a convenient way for people to come and go from the underground city to the surface.''')
+chapter3BobAlivePart3.append('''However, the blasts on the surface caused a lot of cave ins.''')
+chapter3BobAlivePart3.append('''Because the construction of the tunnels wasn’t fully done, they couldn’t withstand the impacts and shocks of the explosions. This is what lead to the creation of the expedition teams to dig a path back to the surface.''')
+chapter3BobAlivePart3.append('''Bob: “This elevator will take us up all the way to the sewers. From there it won\’t take us long to reach the surface.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Awesome, but where is the elevator?”''')
+chapter3BobAlivePart3.append('''Bob: “The elevator should still be down here. The last expedition team used it to come back to underground city. There shouldn’t be anyone else using the elevator besides us…”''')
+chapter3BobAlivePart3.append(playerName + ''': “Do you think someone survived the attack and somehow got ahead of us?”''')
+chapter3BobAlivePart3.append('''Bob: “I don\’t know, but let’s try to bring it down. There is a crank we need to turn. It takes a few minutes to power up the elevator.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Alright. Let’s get to work!”''')
+chapter3BobAlivePart3.append('''Bob: “Ok. I\’ll start cranking. Keep an eye out in case those things come back.”''')
+chapter3BobAlivePart3.append(playerName + ''': “Right.”''')
+chapter3BobAlivePart3.append('''As Bob turns the crank it begins to make a loud noise. It sounds like old rusted gears turning.The noise echoes loudly throughout the area. Bob and playerName look at each other and quickly realize that those monsters are probably headed their way because of the noise. Bob rushes to turn the crank faster to try and speed up the process.''')
+chapter3BobAlivePart3.append('''In the distance you begin to hear someone screaming in the distance. Bob continues to turn the crank.''')
 
 
+# chpater3 if Bob is alive part 4
+chapter3BobAlivePart4.append('''(Battle:mutant)''')
+chapter3BobAlivePart4.append('''They put up a fight and are able to keep them at bay long enough for the elevator to come down. I quickly get inside and yell to Bob''')
+chapter3BobAlivePart4.append(playerName + ''': “Hurry! Get in! The elevators here!”''')
+
+# chapter 3 if Cody is alive part 1
+chapter3CodyAlivePart1.append('''Cody: “Whatever they where they couldn't have been human they looked to deformed.”''')
+
+# chpater 3 if Tanner is alive part 1
+chapter3TannerAlivePart1.append('''Tanner: “Yeah don\'t feel bad with my gun here they’ll be no problems when it comes down to dealing with those beasts will make it to the surface no problem now that I know there is something out there I won’t let it get to us so easily.” ''')
+
+# chapter 3 if Hill is alive part 1
+chpater3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
+chpater3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
+chpater3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
+chpater3HillAlivePart1.append('''Hill: “Ok that should be good!”''')
+chpater3HillAlivePart1.append('''Tanner: “What are you planning on doing??''')
+chpater3HillAlivePart1.append('''Hill: “Saving our lives! This will stop them in their tracks before getting to us.”''')
+chpater3HillAlivePart1.append(''''Tanner: “But isn\’t there a chance we could also be caved in with them??”''')
+chpater3HillAlivePart1.append('''Hill: “That’s a chance I\’m willing to take. If they get to us there is no way we\’ll make it out of here alive. Just trust me on this!”''')
+chpater3HillAlivePart1.append('''Tanner: "''' + playerName + ''' you aren't really gonna let Hill kill us are you???”''')
+chpater3HillAlivePart1.append('''Cody: “I\’d rather take my chances with the explosion than getting torn up by those monsters.”''')
+chpater3HillAlivePart1.append('''(Ch3Choice1)''')
+
+# let hill use explosives
+chpater3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
+
+# don't let hill use explosives Hill & Cody die 
+chpater3DonUseExp.append('''Hill doesn\'t use explosives''')
+chpater3DonUseExp.append('''Hill dies''')
+
+chapter3HillAlivePart1.append('''Hill: “Right it\’s my time to shine! Don\’t worry I have an idea! I\’ll just set down some charges right over here.”''')
+chapter3HillAlivePart1.append('''Hill runs toward the screams then stops about 50 feet from the elevator''')
+chapter3HillAlivePart1.append('''Hill begins placing charges on both sides of the wall of the cave.''')
+chapter3HillAlivePart1.append('''Hill: “Ok that should be good!”''')
+chapter3HillAlivePart1.append('''Tanner: “What are you planning on doing??''')
+chapter3HillAlivePart1.append('''Hill: “Saving our lives! This will stop them in their tracks before getting to us.”''')
+chapter3HillAlivePart1.append(''''Tanner: “But isn\’t there a chance we could also be caved in with them??”''')
+chapter3HillAlivePart1.append('''Hill: “That’s a chance I\’m willing to take. If they get to us there is no way we\’ll make it out of here alive. Just trust me on this!”''')
+chapter3HillAlivePart1.append('''Tanner: "''' + playerName + ''' you aren't really gonna let Hill kill us are you???”''')
+chapter3HillAlivePart1.append('''Cody: “I\’d rather take my chances with the explosion than getting torn up by those monsters.”''')
+chapter3HillAlivePart1.append('''(Ch3Choice1)''')
+
+# let hill use explosives Hill and Cody lives 
+chapter3UseHillExp.append('''Hill uses explosives mutants can\'t get in''')
+chapter3UseHillExp.append('''Cody: “I won\'t let you fight them on your own!”''')
+chapter3UseHillExp.append('''Cody joins in the fray and begins firing his pistol.''')
+chapter3UseHillExp.append('''(Battle:mutant)''')
+chapter3UseHillExp.append('''They put up a fight and are able to keep them at bay long enough for the elevator to come down. I quickly get inside and yell to Bob.''')
+chapter3UseHillExp.append(playerName + ''': “Hurry! Get in! The elevators here!”''')
+
+# don't let hill use explosives Hill & Cody dies 
+chapter3DonUseExp.append('''Hill doesn\'t use explosives''')
+chapter3DonUseExp.append('''The more Bob turns the crank the louder the screams get.''')
+chapter3DonUseExp.append('''You can feel your heart pounding. You just want to run and hide, but the only place to go is back where the screams are coming from.''')
+chapter3DonUseExp.append('''As the screams get louder so do the gears. Bob is pushing himself to turn the crank as fast as he possibly can.''')
+chapter3DonUseExp.append('''Just as the crank stops turning you hear a generator turning on. A small low lit light come on.''')
+chapter3DonUseExp.append('''The console for the elevator is now lit. Bob quickly presses the call button.''')
+chapter3DonUseExp.append('''Both you and Bob turn and face the direction that the screams are coming from.  It\'s pitch black and you can’t make anything out.''')
+chapter3DonUseExp.append('''You look up and you can barely see what you think is the elevator coming down.''')
+chapter3DonUseExp.append('''Then you hear a scream. It sounds like they are only a few feet away from you.''')
+chapter3DonUseExp.append('''You begin to smell a rotten odor that makes you want to vomit, but you\'re too scared to.''')
+chapter3DonUseExp.append('''Finally they reach you. You can  almost see them clearly. They look human, but their flesh is green, bubbly, and falling off. Their eyes are gone and some still have them dangling out of their sockets. Some are missing their limbs. Their mouth dripping with blood and other body fluids.''')
+chapter3DonUseExp.append('''You think to yourself “this is it. It’s over.”''')
+chapter3DonUseExp.append('''But just then Bob looks toward you and says''')
+chapter3DonUseExp.append('''Bob: “It\'s been an honor to have been by your side for so long, but I won\'t let them take you like they’ve taken everyone else”''')
+chapter3DonUseExp.append('''Bob pulls out a small knife and runs between those mutants.''')
+chapter3DonUseExp.append('''Bob begins fighting off the mass horde of mutations.''')
+
+# Hill dies
+chapter3HillNotAlive.append('''The more Bob turns the crank the louder the screams get.''')
+chapter3HillNotAlive.append('''You can feel your heart pounding. You just want to run and hide, but the only place to go is back where the screams are coming from.''')
+chapter3HillNotAlive.append('''As the screams get louder so do the gears. Bob is pushing himself to turn the crank as fast as he possibly can.''')
+chapter3HillNotAlive.append('''Just as the crank stops turning you hear a generator turning on. A small low lit light come on.''')
+chapter3HillNotAlive.append('''The console for the elevator is now lit. Bob quickly presses the call button.''')
+chapter3HillNotAlive.append('''Both you and Bob turn and face the direction that the screams are coming from.  It\'s pitch black and you can’t make anything out.''')
+chapter3HillNotAlive.append('''You look up and you can barely see what you think is the elevator coming down. Then you hear a scream. It sounds like they are only a few feet away from you.''')
+chapter3HillNotAlive.append('''You begin to smell a rotten odor that makes you want to vomit, but you're too scared to.''')
+chapter3HillNotAlive.append('''Finally they reach you. You can  almost see them clearly. They look human, but their flesh is green, bubbly, and falling off. Their eyes are gone and some still have them dangling out of their sockets. Some are missing their limbs. Their mouth dripping with blood and other body fluids.''')
+chapter3HillNotAlive.append('''You think to yourself “this is it. It\'s over.”''')
+chapter3HillNotAlive.append('''But just then Bob looks toward you and says...''')
+chapter3HillNotAlive.append('''Bob: “It\'s been an honor to have been by your side for so long, but I won\'t let them take you like they’ve taken everyone else”''')
+chapter3HillNotAlive.append('''Bob pulls out a small knife and runs between those mutants''')
+chapter3HillNotAlive.append('''Bob begins fighting off the mass horde of mutations''')
+
+# chapter 4 part 1
+chapter4Part1.append('''The elevator begins to slow down. It eventually comes to a stop and the doors begin to open. The first thing you notice are the lights hanging on the ceiling.''')
+chapter4Part1.append('''You think to yourself “there\'s a lot more light than I would have imagined and I haven’t even reached the surface yet.”''')
+
+# chapter 4 if cody alive
+chapter4IfCodyAlivePart1.append('''Just as you are about to take the first step out of the elevator, Cody grabs and pulls you back in.''')
+chapter4IfCodyAlivePart1.append('''Cody: “Wait. The sewage water is probably not safe to stand in. It could be radiated. Try to avoid stepping in the sewage water as much as possible. Stick to the sides, there's no water there.”''')
+chapter4IfCodyAlivePart1.append('''Everyone begins to make their way out of the elevator being careful to not set foot in the sewage water. Then the foul odor beings to hit you. “This is definitely the sewers,” you think to yourself, “Who knows how many things have died here.”''')
+
+chapter4IfCodyDeadPart1.append('''You begin take a few steps outside of the elevator. Your foot lands in sewage water. A foul odor hits you.  “This is definitely the sewers,” you think to yourself, “Who knows how many things have died here.”''')
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
 DisplayStory(chapter2)
+branchThis()
+DisplayStory(chapter4Part1)
+
+if(chrCody.getAlive()):
+	DisplayStory(chapter4IfCodyAlivePart1)
+else: # cody is dead 
+	DisplayStory(chapter4IfCodyDeadPart1)
+	

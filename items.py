@@ -140,6 +140,35 @@ class gun(items):
 		
 	def amount(self):
 		return self.amountCount
+		
+class knife(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.amountCount = 0
+		
+	def itemName(self):
+		return "Knife"
+		
+	def displayText(self):
+		return "you get a knife from Bob"
+		
+	def action(self):
+		return "Deals X amount more damage"
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		self.usable = True
+		self.inv = True
+		
+	def amount(self):
+		return self.amountCount
 
 class takeLantern(items):
 
@@ -172,6 +201,41 @@ class takeLantern(items):
 		
 	def getBranch(self):
 		return 'chapter2TakeLantern'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+class dontLantern(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Leave lantern"
+		
+	def displayText(self):
+		return "To leave the lantern"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter2DontTakeLantern'
 
 	def setBranchToFalse(self):
 		self.branch = False
@@ -398,4 +462,78 @@ class wakeEveryone(items):
 
 	def setBranchToFalse(self):
 		self.branch = False
+		
+class hillUseExp(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Let Hill use explosives"
+		
+	def displayText(self):
+		return "To let Hill use the explosives"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter3UseHillExp'
+
+	def setBranchToFalse(self):
+		self.branch = False
 	
+	
+class hillDonExp(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Don\'t let Hill use his explosives"
+		
+	def displayText(self):
+		return "Not to let Hill use explosives"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True
+		# don't set in inventory 
+		self.inv = False
+		
+	def amount(self):
+		return self.amountCount
+		
+	def getBranch(self):
+		return 'chapter3DonUseExp'
+
+	def setBranchToFalse(self):
+		self.branch = False
