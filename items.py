@@ -140,6 +140,35 @@ class gun(items):
 		
 	def amount(self):
 		return self.amountCount
+		
+class knife(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.amountCount = 0
+		
+	def itemName(self):
+		return "Knife"
+		
+	def displayText(self):
+		return "you get a knife from Bob"
+		
+	def action(self):
+		return "Deals X amount more damage"
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		self.usable = True
+		self.inv = True
+		
+	def amount(self):
+		return self.amountCount
 
 class takeLantern(items):
 
