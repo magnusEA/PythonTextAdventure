@@ -364,6 +364,7 @@ chapter4IfCodyAlivePart1 = []
 chapter4IfCodyDeadPart1 = []
 chapter4IfBobAlivePart1 = []
 chapter4IfBobDeadPart1 = []
+chapter4IfBobDeadPart2 = []
 chapter4RunThro = []
 chapter4SitWait = []
 chapter4FightAli = []
@@ -371,7 +372,8 @@ chapter4Distract = []
 chapter4TannerAliveChoices = []
 chapter4TannerDeadChoices = []
 chapter4TannerShot = []
-
+chapter5Ending1 = []
+chapter5Ending2 = []
 
 # chapter1
 chapter1.append('''You wake up to a very loud alarm 
@@ -668,7 +670,23 @@ chapter4IfBobAlivePart1.append(''' Nobody didn’t notice them at first because 
 chapter4IfBobAlivePart1.append('''What are we going to do?''')
 
 # chapter 4 if Bob is dead
-chapter4IfBobDeadPart1.append(''' ''')
+chapter4IfBobDeadPart1.append('''To your right you notice that the ceiling has collapsed, causing the path to be blocked.''')
+chapter4IfBobDeadPart1.append('''The only path to follow is to your left. You begin walking down the left path and thankfully you're able clearly see what is in front of you.''')
+chapter4IfBobDeadPart1.append('''No worries of what may lie in the dark.''')
+chapter4IfBobDeadPart1.append('''After what feels like the longest walk of your life, you begin to hear splashing.''')
+chapter4IfBobDeadPart1.append('''You quickly hide behind a pillar that’s in front of you. The splashing is getting more and more faint until it’s gone.''')
+chapter4IfBobDeadPart1.append('''You feel comfortable enough to move again.''')
+chapter4IfBobDeadPart1.append('''Whoever or whatever it was, you don’t want to know.''')
+chapter4IfBobDeadPart1.append('''“It could be more of those mutations, but if they are this far up could the surface still be habitable?” you think.''')
+chapter4IfBobDeadPart1.append(''' “I’ll just have to try and find out myself. This expedition can’t be for nothing after so many have died.”''')
+chapter4IfBobDeadPart1.append('''After another few minutes of walking you find a hole with light shining into the sewers.''')
+chapter4IfBobDeadPart1.append('''You think to yourself, “That must be the surface! I’ve made it! Just a little bit more and I’ll…”''')
+chapter4IfBobDeadPart1.append('''you are suddenly stunned with fear.''')
+chapter4IfBobDeadPart1.append('''You make out something that looks like a horde alligators. However, something is off. They don’t look complete.''')
+chapter4IfBobDeadPart1.append('''They look similar to the mutations you’ve come across before.''')
+chapter4IfBobDeadPart1.append('''You didn’t notice them at first because they weren't moving, but now that you’ve gotten closer it’s clear they are gathered around that hole in the wall.''')
+chapter4IfBobDeadPart1.append('''It’s to many of them to be able to take on. You think, “What am I going to do?”''')
+chapter4IfBobDeadPart1.append('''(Ch4Choice2)''')
 
 # chapter 4 decide to run through 
 chapter4RunThro.append(''' You decide to run through the alligators''')
@@ -716,6 +734,20 @@ chapter4TannerAliveChoices.append('''(Ch4Choice1)''')
 # chapter 4 Tanner dead choices
 chapter4TannerDeadChoices.append('''(Ch4Choice2)''')
 
+# chapter 5 ending 1
+chapter5Ending1.append('''You take your first step on the surface it’s green! You can feel the cool air breeze hit you body and feel at ease.''')
+chapter5Ending1.append('''You’ve made it! You did whatever it took to survive and make it out alive.''')
+chapter5Ending1.append('''You made it out practically unscahted and unharmed.''')
+chapter5Ending1.append(''' This came at the cost of putting yourself above all other, including your closest companions. They all died to ensure your survival.''')
+chapter5Ending1.append('''Some men in radiation suits come up to you in shock and awe.''')
+chapter5Ending1.append('''You discover that there are still humans alive on the surface in fact the area you used to live on was used as a testing site to see how a nuclear bomb would affect the inhabitants and if anyone could survive with an underground city.''')
+
+# chapter 5 ending 2
+chapter5Ending2.append('''You survive the wastes without any ill effects, but what you did for your survival did not leave you completely unscathed.''')
+chapter5Ending2.append('''You have scars that will remind you just how fragile a human can be.''')
+chapter5Ending2.append('''Some men in radiation suits come up to you in shock and awe.''')
+chapter5Ending2.append('''You discover that there are still humans alive on the surface in fact the area you used to live on was used as a testing site to see how a nuclear bomb would affect the inhabitants and if anyone could survive with an underground city.''')
+
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
@@ -738,3 +770,12 @@ if(chrBob.getAlive()):
 		DisplayStory(chapter4TannerDeadChoices())
 # if bob is dead 
 else: 
+	DisplayStory(chapter4IfBobDeadPart1)
+
+# Health is high Radiation level is low: ending
+if(PS.getHealth() > 50 and PS.getRadiation() < 10):	
+	DisplayStory(chapter5Ending1)
+elif(PS.getHealth > 0 and PS.getRadiation() < 10):
+	DisplayStory(chapter5Ending2)
+
+print "Game Over"
