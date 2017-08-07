@@ -736,4 +736,5 @@ if(chrBob.getAlive()):
 		DisplayStory(chapter4TannerAliveChoices())
 	else:
 		DisplayStory(chapter4TannerDeadChoices())
-		
+# if bob is dead 
+else: 
