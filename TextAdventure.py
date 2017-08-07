@@ -31,6 +31,11 @@ it.append(items.takeLantern())
 it.append(items.dontLantern())
 it.append(items.hillUseExp())
 it.append(items.hillDonExp())
+it.append(items.ch4RunThro())
+it.append(items.ch4Wait())
+it.append(items.ch4Fight())
+it.append(items.ch4Dist())
+it.append(items.ch4TanShoot())
 
 en.append(enemys.mutant())
 
@@ -206,6 +211,16 @@ def nextBranch():
 					DisplayStory(chapter3DonUseExp)
 				elif(brh == 'chapter3UseHillExp'):
 					DisplayStory(chapter3UseHillExp)
+				elif(brh == 'chapter4TannerShot'):
+					DisplayStory(chapter4TannerShot)
+				elif(brh == 'chapter4RunThro'):
+					DisplayStory(chapter4RunThro)
+				elif(brh == 'chapter4SitWait'):
+					DisplayStory(chapter4SitWait)
+				elif(brh == 'chapter4FightAli'):
+					DisplayStory(chapter4FightAli)
+				elif(brh == 'chapter4Distract'):
+					DisplayStory(chapter4Distract)
 		
 			# otherwise handle multiple condition branchs
 	
@@ -311,7 +326,9 @@ choices = {
 'Ch1Choice2': 'What do I tell Bob?: 1. Let him know what Jim said, 2. Don\'t tell Bob anything, 3. Change the topic, 4.B',
 'Ch2Choice1': 'What should I do?: 1. Wake up Bob to help find Jim, 2. Look for Jim alone, 3. Wake everyone up to help find Jim, 4.C',
 'Ch2Choice2': 'What should I do?: 1. Take lantern, 2. Leave lantern, 3.C',
-'Ch3Choice1': 'Should I: 1. Let Hill use explosives, 2. Don\'t let Hill use his explosives, 3.C' 
+'Ch3Choice1': 'Should I: 1. Let Hill use explosives, 2. Don\'t let Hill use his explosives, 3.C',
+'Ch4Choice1': 'Should I: 1. Try to run through them, 2. Wait, Maybe they\'ll move if I just sit here and wait, 3. Fight them, 4. Try to distract them, 5. Tanner shoot!, 6.C',
+'Ch4Choice2': 'Should I: 1. Try to run through them, 2. Wait, Maybe they\'ll move if I just sit here and wait, 3. Fight them, 4. Try to distract them, 6.C'
 }
 		
 # append all story (list for each branch of story)
@@ -345,6 +362,15 @@ chapter3DonUseExp = []
 chapter4Part1 = []
 chapter4IfCodyAlivePart1 = []
 chapter4IfCodyDeadPart1 = []
+chapter4IfBobAlivePart1 = []
+chapter4IfBobDeadPart1 = []
+chapter4RunThro = []
+chapter4SitWait = []
+chapter4FightAli = []
+chapter4Distract = []
+chapter4TannerAliveChoices = []
+chapter4TannerDeadChoices = []
+chapter4TannerShot = []
 
 
 # chapter1
@@ -625,7 +651,71 @@ chapter4IfCodyAlivePart1.append('''Just as you are about to take the first step 
 chapter4IfCodyAlivePart1.append('''Cody: "Wait. The sewage water is probably not safe to stand in. It could be radiated. Try to avoid stepping in the sewage water as much as possible. Stick to the sides, there\'s no water there.”''')
 chapter4IfCodyAlivePart1.append('''Everyone begins to make their way out of the elevator being careful to not set foot in the sewage water. Then the foul odor beings to hit you. "This is definitely the sewers," you think to yourself, "Who knows how many things have died here.”''')
 
+# chapter 4 if cody is dead 
 chapter4IfCodyDeadPart1.append('''You begin take a few steps outside of the elevator. Your foot lands in sewage water. A foul odor hits you.  "This is definitely the sewers,” you think to yourself, "Who knows how many things have died here.”''')
+
+# chapter 4 if Bob is alive 
+chapter4IfBobAlivePart1.append('''To the right of you it looks like the ceiling caved in the only path to follow is to your left.''')
+chapter4IfBobAlivePart1.append('''Everyone begins walking down the left path thankful that you're able to see clearly in front of you and not having to worry about what’s in the dark.''')
+chapter4IfBobAlivePart1.append('''What feels like the longest walk of your life you begin to hear splashing.''')
+chapter4IfBobAlivePart1.append('''Everyone quickly hides behind a pillar that’s in front of you.''')
+chapter4IfBobAlivePart1.append('''The splashing sound is getting more and more faint then it’s gone. You feel comfortable to move again.''')
+chapter4IfBobAlivePart1.append('''Whoever or whatever it was you don’t want to know.''')
+chapter4IfBobAlivePart1.append('''It could be more of those mutations but if they are this far up could the surface still be habitable? I’ll just have to try and find out myself we can’t make this expedition for nothing especially since we’ve lost so many members.''')
+chapter4IfBobAlivePart1.append('''After another few minutes of walking the group finds a hole with light shining into the sewers you think to yourself that must be the surface! we’ve made it just a little bit more and well…''')
+chapter4IfBobAlivePart1.append('''you are suddenly stunned with fear once you’ve seen the horde of what looks like alligators but they are different they don’t look complete just like the mutations you’ve encountered before they are deformed.''')
+chapter4IfBobAlivePart1.append(''' Nobody didn’t notice them at first because they weren't moving but now that you’ve gotten closer it’s clear they are gathered around that hole in the wall and it’s to many of them to be able to take on.''')
+chapter4IfBobAlivePart1.append('''What are we going to do?''')
+
+# chapter 4 if Bob is dead
+chapter4IfBobDeadPart1.append(''' ''')
+
+# chapter 4 decide to run through 
+chapter4RunThro.append(''' You decide to run through the alligators''')
+chapter4RunThro.append('''You die!''')
+chapter4RunThro.append('''Game Over!''')
+
+# chapter 4 waiting to long end up dead 
+chapter4SitWait.append('''You wait so long that eventually the alliagtors find you and kill you''')
+chapter4SitWait.append('''Game Over!''')
+
+# chapter 4 fight endless alligators
+chapter4FightAli.append('''You charge in deteremined to bash your way through the alligators!''')
+chapter4FightAli.append('''However, for each alligator you take down 5 more take it\'s place!''')
+chapter4FightAli.append('''The alligators overwhlem you in there numbers and you are taken victim!''')
+chapter4FightAli.append('''Game Over!''')
+
+# chapter 4 distract alligators (Bob alive)
+chapter4Distract.append('''You pick up some broken concrete from the wall and pray and hope they go for it.''')
+chapter4Distract.append('''You throw the concrete goes flying to the other side of the passage.''')
+chapter4Distract.append('''and just as it hits the ground the alligators all turn to chase after it!''')
+chapter4Distract.append('''Now!, your heart is pounding as you get up and begin to run to the opening!''')
+chapter4Distract.append('''As you get near the opening one of the alligators turns around and starts charging in your direction!''')
+chapter4Distract.append('''Bob trips and falls!''')
+chapter4Distract.append('''Before you can turn around to go for Bob the rest of the alligators turn to face you and begin heading your way!''')
+chapter4Distract.append('''Bob looks at you and says "Go!, there is no time for me! You\'ve got to make it out alive and come back for the rest of human kind"''')
+chapter4Distract.append('''You take one last glance and turn around to make your escape''')
+
+# chapter 4 Tanner shots
+chapter4TannerShot.append(playerName + ''': "Tanner, do you have enough shots to get us through?"''')
+chapter4TannerShot.append('''Tanner: "No, I'm afried not there is just to many of them"''')
+chapter4TannerShot.append(playerName + ''': "Damn, I have a crazy idea why don\'t you try to shot the ones closest to the hole to try and create a path for us to get through."''')
+chapter4TannerShot.append(playerName + ''': "We just need a little bit of time and will be home free!"''')
+chapter4TannerShot.append('''Tanner: "I\'ll do it I don\'t think we have much choice"''')
+chapter4TannerShot.append('''Tanner begins to unload on the alliagtors nearest the hole''')
+chapter4TannerShot.append('''We start to run down past the alliagtors trying our best to avoid them''')
+chapter4TannerShot.append('''Tanner is shotting his last few shots into them trying to buy us as much time to reach the hole''')
+chapter4TannerShot.append('''As we almost reach the exit Tanner is taken down''')
+chapter4TannerShot.append('''One of the alliagtors was able to bite his leg preventing him from moving''')
+chapter4TannerShot.append('''There was nothing I could do Tanner was dead the instant he got caught''')
+chapter4TannerShot.append('''His sacrifice was not in vain I made it out into the world''')
+
+# chapter 4 Tanner alive choices 
+chapter4TannerAliveChoices.append('''(Ch4Choice1)''')
+
+# chapter 4 Tanner dead choices
+chapter4TannerDeadChoices.append('''(Ch4Choice2)''')
+
 
 DisplayStory(chapter1)
 DisplayStory(chapter1Part2)
@@ -638,3 +728,12 @@ if(chrCody.getAlive()):
 else: # cody is dead 
 	DisplayStory(chapter4IfCodyDeadPart1)
 	
+# chapter 4 if Bob is alive 
+if(chrBob.getAlive()):
+	DisplayStory(chapter4IfBobAlivePart1)
+	# check if Tanner is alive for displaying choices 
+	if(chrTanner.getAlive()):
+		DisplayStory(chapter4TannerAliveChoices())
+	else:
+		DisplayStory(chapter4TannerDeadChoices())
+		

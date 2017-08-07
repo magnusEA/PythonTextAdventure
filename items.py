@@ -240,6 +240,181 @@ class dontLantern(items):
 	def setBranchToFalse(self):
 		self.branch = False
 		
+class ch4RunThro(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Try to run through them"
+		
+	def displayText(self):
+		return "You start to run"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter4RunThro'
+
+	def setBranchToFalse(self):
+		self.branch = False
+		
+class ch4Wait(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Wait, Maybe they\'ll move if I just sit here and wait"
+		
+	def displayText(self):
+		return "You wait"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter4SitWait'
+
+	def setBranchToFalse(self):
+		self.branch = False	
+
+class ch4Fight(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Fight them"
+		
+	def displayText(self):
+		return "You start to fight"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter4FightAli'
+
+	def setBranchToFalse(self):
+		self.branch = False		
+
+class ch4Dist(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Try to distract them"
+		
+	def displayText(self):
+		return "distracting them might just do the trick"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter4Distract'
+
+	def setBranchToFalse(self):
+		self.branch = False		
+
+class ch4TanShoot(items):
+
+	def __init__(self):
+		self.inv = False
+		self.usable = False
+		self.branch = True
+		
+	def itemName(self):
+		return "Tanner shoot!"
+		
+	def displayText(self):
+		return "Push Tanner to shot"
+		
+	def action(self):
+		return self.branch
+		
+	def isUsable(self):
+		return self.usable
+		
+	def isInv(self):
+		return self.inv
+		
+	def setInInv(self):
+		# make usable to be checked later 
+		self.usable = True		
+		
+	def amount(self):
+		return self.amountCount	
+		
+	def getBranch(self):
+		return 'chapter4TannerShot'
+
+	def setBranchToFalse(self):
+		self.branch = False				
+
 # non-items------------------------------------------------------------------------------------------------		
 class jimSaid(items):
 	
